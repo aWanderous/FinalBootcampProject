@@ -12,3 +12,11 @@ This app has
 - polished frontend/UI
 - structured folder layout
 - (coding quality and hidden API keys)
+
+
+ _Deliverables_
+* Authenication for both owners and renters
+* Renting app that allows for one glance selection of possible places to rent
+* Swipe through places
+* Connections to paying rent
+* Looking at multiple options of which app to bulid
