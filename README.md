@@ -15,8 +15,7 @@ This app has
 
 
  _Deliverables_
-* Authenication for both owners and renters
-* Renting app that allows for one glance selection of possible places to rent
-* Swipe through places
-* Connections to paying rent
-* Looking at multiple options of which app to bulid
+* Authenication for both to be weds and helpers
+* Organistion for each part of the wedding process
+* Looking at multiple sites to help making wedding easy
+
