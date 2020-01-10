@@ -19,9 +19,9 @@ This app has
 * Organistion for each part of the wedding process
 * Looking at multiple sites to help making wedding easy
 * helper/couple -> login ->
-     tasks
-     > add ( add a new task<suggestions>)
-     > confirm (task completed)
-     > assign (assign the task to a person)
-     > edit (edit the task <update>)
+     tasks > 
+     - add ( add a new task<suggestions>)
+     - confirm (task completed)
+     - assign (assign the task to a person)
+     - edit (edit the task <update>)
      
