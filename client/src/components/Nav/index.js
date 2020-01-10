@@ -1,0 +1,16 @@
+import React from "react";
+
+function Nav() {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a className="navbar-brand" href="/">
+        I.DO
+      </a>
+      <a className="navbar-brand" href="/Saved">
+        Tasks
+      </a>
+    </nav>
+  );
+}
+
+export default Nav;
