@@ -32,6 +32,7 @@ two different logins
      - edit (edit the task <update>)
      - cost (how much was spent)
            > suggested
+              - list of helpers
               - taste testing
               - hair / make up
               - guest seatings (no. on a table)
@@ -40,14 +41,21 @@ two different logins
               - venue
               - boquet
               - invite
-              - websites
-              - hastag
-              - photographer
+              - websites / hastag
+              - photographer / pre-wedding photos
               - dress / suit
               - theme
               - wedding band
               - speeches / vowels
               - dance
+              - cake
+              - transport
+              - entertainment
+ 
+ 
 * cost > 
  total cost of each task
+
+* runsheet >
+on the day schedule
 
