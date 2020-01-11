@@ -10,11 +10,11 @@ export default {
     return axios.get("/api/tasks/" + id);
   },
   // Deletes the movie with the given id
-  deleteTasks: function(id) {
+  deleteTask: function(id) {
     return axios.delete("/api/tasks/" + id);
   },
   // Saves a movie to the database
-  saveTasks: function(movieData) {
+  saveTasks: function(taskData) {
     return axios.post("/api/tasks", taskData);
   }
 };

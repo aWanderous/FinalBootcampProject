@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Movies from "./pages/Movies";
-import Saved from "./pages/Saved";
-import Detail from "./pages/Detail";
+import Login from "./pages/Login";
+import Tasks from "./pages/Tasks";
+import Helpers from "./pages/Helpers";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 
@@ -12,10 +12,10 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Movies} />
-          <Route exact path="/Movies" component={Movies} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/Helpers" component={Helpers} />
           <Route exact path="/Saved" component={Saved} />
-          <Route exact path="/Movies/:id" component={Detail} />
+          <Route exact path="/Tasks/:id" component={Tasks} />
           <Route component={NoMatch} />
         </Switch>
       </div>

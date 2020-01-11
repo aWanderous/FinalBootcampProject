@@ -9,30 +9,28 @@ import { List, ListItem } from "../components/List";
 
 class Saved extends Component {
 	state = {
-		movies: [],
-		title: "",
-		director: "",
-		cast: [],
-		image: "",
-		link: "",
-		plot: ""
+		list: [],
+		task: "",
+		assigned: [],
+		details: "",
+		link: ""
 	};
 
 	componentDidMount() {
-		this.loadMovies();
+		this.loadTasks();
 	}
 
-	loadMovies = () => {
-		API.getMovies()
+	loadTasks = () => {
+		API.getTasks()
 			.then((res) =>
-				this.setState({ movies: res.data, title: "", director: "", plot: "" })
+				this.setState({ list: res.data, task: "", assigned: "", details: "" })
 			)
 			.catch((err) => console.log(err));
 	};
 
-	deleteMovie = (id) => {
-		API.deleteMovie(id)
-			.then((res) => this.loadMovies())
+	deleteTask = (id) => {
+		API.deleteTask(id)
+			.then((res) => this.loadTasks())
 			.catch((err) => console.log(err));
 	};
 
@@ -45,13 +43,13 @@ class Saved extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.title && this.state.director) {
-			API.saveMovie({
-				title: this.state.title,
-				director: this.state.director,
-				plot: this.state.plot
+		if (this.state.task && this.state.details) {
+			API.saveTask({
+				task: this.state.task,
+				assigned: this.state.assigned,
+				details: this.state.details
 			})
-				.then((res) => this.loadMovies())
+				.then((res) => this.loadTasks())
 				.catch((err) => console.log(err));
 		}
 	};
@@ -60,23 +58,23 @@ class Saved extends Component {
 		return (
 			<Container fluid>
 						<Jumbotron>
-							<h1>Places of interest</h1>
+							<h1>The to-do List</h1>
 						</Jumbotron>
-						{this.state.movies.length ? (
+						{this.state.list.length ? (
 							<List>
-								{this.state.movies.map((movie) => (
-									<ListItem key={movie._id}>
-										<Link to={"/Movies/" + movie._id}>
+								{this.state.list.map((task) => (
+									<ListItem key={task._id}>
+										<Link to={"/Movies/" + task._id}>
 											<strong>
-												{movie.title} by {movie.director}
+												{task.task} by {task.details}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deleteMovie(movie._id)} />
+										<DeleteBtn onClick={() => this.deleteTask(task._id)} />
 									</ListItem>
 								))}
 							</List>
 						) : (
-							<h3>No Results to Display</h3>
+							<h3>No set Tasks to Display</h3>
 						)}
 			</Container>
 		);

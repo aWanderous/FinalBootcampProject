@@ -4,10 +4,16 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
-        I.DO
+        I.DU
       </a>
-      <a className="navbar-brand" href="/Saved">
+      <a className="navbar-brand" href="/Tasks">
         Tasks
+      </a>
+      <a className="navbar-brand" href="/Helpers">
+        Helpers
+      </a>
+      <a className="navbar-brand" href="/Costs">
+        Costs
       </a>
     </nav>
   );
