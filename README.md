@@ -18,20 +18,23 @@ This app has
 * Authenication for both to be weds and helpers
 * Organistion for each part of the wedding process
 * Looking at multiple sites to help making wedding easy
+
+
+*Flow*
 * helper/couple > 
-if couple can edit tasks
+if couple can edit tasks,
 if helper can only mark if done or add suggestions
 
 * login >
 two different logins
 
 * tasks > 
-     - add ( add a new task<suggestions>)
+     - add ( suggestions)
      - confirm (task completed)
      - assign (assign the task to a person)
      - edit (edit the task <update>)
      - cost (how much was spent)
-            * suggested >
+            * list of tasks >
               - list of helpers
               - taste testing
               - hair / make up
