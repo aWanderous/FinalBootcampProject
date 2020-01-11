@@ -24,4 +24,16 @@ This app has
      - confirm (task completed)
      - assign (assign the task to a person)
      - edit (edit the task <update>)
-     
+ -> suggested
+ - make up
+ - guest seatings (no. on a table)
+ - wedding favors
+ - playlist
+ - venue
+ - boquet
+ - invite
+ - dress / suit
+ - theme
+ - wedding band
+ - speeches
+ - 
