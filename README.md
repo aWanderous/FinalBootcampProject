@@ -31,7 +31,7 @@ two different logins
      - assign (assign the task to a person)
      - edit (edit the task <update>)
      - cost (how much was spent)
-           > suggested
+           suggested >
               - list of helpers
               - taste testing
               - hair / make up
