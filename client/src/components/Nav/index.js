@@ -6,7 +6,7 @@ function Nav() {
       <a className="navbar-brand" href="/">
         I.DU
       </a>
-      <a className="navbar-brand" href="/Tasks">
+      <a className="navbar-brand" href="/Saved">
         Tasks
       </a>
       <a className="navbar-brand" href="/Helpers">
