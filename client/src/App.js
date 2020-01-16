@@ -15,10 +15,10 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/Helpers" component={Helpers} />
-          <Route exact path="/Saved" component={Saved} />
-          <Route exact path="/Tasks/:id" component={Tasks} />
-          <Route exact path="/Costs" component={Costs} />
+          <Route exact path="/helpers" component={Helpers} />
+          <Route exact path="/saved" component={Saved} />
+          <Route exact path="/tasks/:id" component={Tasks} />
+          <Route exact path="/costs" component={Costs} />
           <Route component={NoMatch} />
         </Switch>
       </div>
