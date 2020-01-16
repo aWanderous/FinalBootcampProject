@@ -9,7 +9,7 @@ import { List, ListItem } from "../components/List";
 
 class Costs extends Component {
 	state = {
-		list: [],
+		lists: [],
 		task: "",
 		assigned: [],
 		details: "",
@@ -23,7 +23,7 @@ class Costs extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ list: res.data, task: "", assigned: "", details: "" })
+				this.setState({ lists: res.data, task: "", assigned: "", details: "" })
 			)
 			.catch((err) => console.log(err));
 	};
@@ -60,16 +60,16 @@ class Costs extends Component {
 						<Jumbotron>
 							<h1>The to-do List</h1>
 						</Jumbotron>
-						{this.state.list.length ? (
+						{this.state.lists.length ? (
 							<List>
-								{this.state.list.map((task) => (
-									<ListItem key={task._id}>
-										<Link to={"/Tasks/" + task._id}>
+								{this.state.lists.map((list) => (
+									<ListItem key={list._id}>
+										<Link to={"/Tasks/" + list._id}>
 											<strong>
-												{task.task} done by {task.assigned}
+												{list.task} done by {list.assigned}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deleteTask(task._id)} />
+										<DeleteBtn onClick={() => this.deleteTask(list._id)} />
 									</ListItem>
 								))}
 							</List>
