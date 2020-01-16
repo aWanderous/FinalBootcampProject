@@ -1,9 +1,9 @@
-const db = require("../models/task");
+const db = require("../models/doList");
 
 // Defining methods for the TaskController
 module.exports = {
   findAll: function(req, res) {
-    db.Task
+    db.Tasks
       .find(req.query)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
