@@ -2,7 +2,7 @@ import React from "react";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-white bg-secondary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
       <a className="navbar-brand" href="/">
         I.DU
       </a>
