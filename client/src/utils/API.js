@@ -1,20 +1,20 @@
 import axios from "axios";
 
 export default {
-  // Gets all movies
+  // Gets all tasks
   getTasks: function() {
-    return axios.get("/api/saved");
+    return axios.get("/api/tasks");
   },
-  // Gets the movie with the given id
+  // Gets the tasks with the given id
   getTask: function(id) {
     return axios.get("/api/tasks/" + id);
   },
-  // Deletes the movie with the given id
+  // Deletes the task with the given id
   deleteTask: function(id) {
     return axios.delete("/api/tasks/" + id);
   },
-  // Saves a movie to the database
+  // Saves a task to the database
   saveTasks: function(taskData) {
-    return axios.post("/api/saved", taskData);
+    return axios.post("/api/tasks", taskData);
   }
 };
