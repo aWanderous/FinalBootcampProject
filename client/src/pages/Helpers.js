@@ -44,7 +44,7 @@ class Helpers extends Component {
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		if (this.state.task && this.state.details) {
-			API.saveTask({
+			API.saveTasks({
 				task: this.state.task,
 				assigned: this.state.assigned,
 				details: this.state.details
@@ -62,14 +62,14 @@ class Helpers extends Component {
 						</Jumbotron>
 						{this.state.list.length ? (
 							<List>
-								{this.state.list.map((task) => (
-									<ListItem key={task._id}>
-										<Link to={"/Tasks/" + task._id}>
+								{this.state.lists.map((list) => (
+									<ListItem key={list._id}>
+										<Link to={"/Tasks/" + list._id}>
 											<strong>
-												{task.assigned}
+												{list.assigned}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deleteTask(task._id)} />
+										<DeleteBtn onClick={() => this.deleteTask(list._id)} />
 									</ListItem>
 								))}
 							</List>
