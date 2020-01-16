@@ -58,7 +58,7 @@ class Helpers extends Component {
 		return (
 			<Container fluid>
 						<Jumbotron>
-							<h1>The to-do List</h1>
+							<h1>Helpers</h1>
 						</Jumbotron>
 						{this.state.lists.length ? (
 							<List>
