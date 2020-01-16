@@ -5,6 +5,7 @@ import Tasks from "./pages/Tasks";
 import Helpers from "./pages/Helpers";
 import NoMatch from "./pages/NoMatch";
 import Saved from "./pages/Saved";
+import Costs from "./pages/Costs";
 import Nav from "./components/Nav";
 
 function App() {
