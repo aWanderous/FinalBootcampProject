@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
   task: { type: String, required: true },
-  helper: { type: String, required: true },
-  time: { type: String, required: true },
-  date: { type: Date, default: Date.now }
+  assigned: { type: String},
+  details: { type: String, required: true },
+	link:  { type: String},
 });
 
 const Task = mongoose.model("Task", TaskSchema);
