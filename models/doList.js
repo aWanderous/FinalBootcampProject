@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const listSchema = new Schema({
   task: { type: String, required: true },
-  assigned: { type: String},
+  assigned: [String],
   details: { type: String, required: true },
-	link:  { type: String},
+	link: { type: String}
 });
 
 const List = mongoose.model("List", listSchema);
