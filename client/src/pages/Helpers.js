@@ -60,7 +60,7 @@ class Helpers extends Component {
 						<Jumbotron>
 							<h1>The to-do List</h1>
 						</Jumbotron>
-						{this.state.list.length ? (
+						{this.state.lists.length ? (
 							<List>
 								{this.state.lists.map((list) => (
 									<ListItem key={list._id}>
