@@ -9,7 +9,7 @@ import { List, ListItem } from "../components/List";
 
 class Helpers extends Component {
 	state = {
-		list: [],
+		lists: [],
 		task: "",
 		assigned: [],
 		details: "",
