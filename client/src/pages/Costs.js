@@ -22,7 +22,7 @@ class Cost extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {this.state.list.task} by {this.state.list.assigned}
+                {this.state.list.task} costs {this.state.list.cost}
               </h1>
             </Jumbotron>
           </Col>
@@ -30,18 +30,9 @@ class Cost extends Component {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <Col size="md-6">
-                <h1>Cost</h1>
-                <p>
-                  {this.state.list.cost}
-                </p>
-              </Col>
-              <h1>Plot</h1>
+              <h1>details</h1>
               <p>
                 {this.state.list.details}
-              </p>
-              <p>
-              <a href={this.state.list.link}>Link to more details</a>
               </p>
             </article>
           </Col>
