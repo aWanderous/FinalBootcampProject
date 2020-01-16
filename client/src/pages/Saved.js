@@ -23,7 +23,7 @@ class Saved extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ lists: res.data, task: "", assigned: "", details: "" })
+				this.setState({ lists: res.data, task: "", assigned: [], details: "" })
 			)
 			.catch((err) => console.log(err));
 	};
@@ -64,7 +64,7 @@ class Saved extends Component {
 							<List>
 								{this.state.lists.map((list) => (
 									<ListItem key={list._id}>
-										<Link to={"/tasks/" + list._id}>
+										<Link to={"/Tasks/" + list._id}>
 											<strong>
 												{list.task} done by {list.assigned}
 											</strong>
