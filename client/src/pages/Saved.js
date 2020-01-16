@@ -44,7 +44,7 @@ class Saved extends Component {
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		if (this.state.task && this.state.details) {
-			API.saveTask({
+			API.saveTasks({
 				task: this.state.task,
 				assigned: this.state.assigned,
 				details: this.state.details
@@ -64,9 +64,9 @@ class Saved extends Component {
 							<List>
 								{this.state.list.map((task) => (
 									<ListItem key={task._id}>
-										<Link to={"/Movies/" + task._id}>
+										<Link to={"/Tasks/" + task._id}>
 											<strong>
-												{task.task} by {task.details}
+												{task.task} done by {task.assigned}
 											</strong>
 										</Link>
 										<DeleteBtn onClick={() => this.deleteTask(task._id)} />
