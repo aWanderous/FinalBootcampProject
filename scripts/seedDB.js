@@ -10,8 +10,8 @@ const weddingSeed = [
 	}
 ];
 
-db.Movie.remove({})
-	.then(() => db.Movie.collection.insertMany(weddingSeed))
+db.List.remove({})
+	.then(() => db.List.collection.insertMany(weddingSeed))
 	.then((data) => {
 		console.log(data.result.n + " records inserted!");
 		process.exit(0);
