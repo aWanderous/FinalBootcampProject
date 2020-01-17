@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/helpers" component={Helpers} />
           <Route exact path="/saved" component={Saved} />
-          <Route exact path="/tasks/:id" component={Tasks} />
+          <Route exact path="/task/:id" component={Tasks} />
           <Route exact path="/costs" component={Costs} />
           <Route component={NoMatch} />
         </Switch>
