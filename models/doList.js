@@ -6,7 +6,8 @@ const listSchema = new Schema({
   assigned: [String],
   details: { type: String, required: true },
   link: { type: String},
-  cost: { type: Number}
+  cost: { type: Number},
+  date: { type: Date, default: Date.now }
 });
 
 const List = mongoose.model("List", listSchema);

@@ -9,7 +9,8 @@ const weddingSeed = [
 		details: "Suit up the groom",
 		assigned: [],
   		link: "",
- 		cost: ""
+		cost: "",
+		date: new Date(Date.now())
 	}
 ];
 
