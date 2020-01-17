@@ -64,7 +64,7 @@ class Helpers extends Component {
 							<List>
 								{this.state.lists.map((list) => (
 									<ListItem key={list._id}>
-										<Link to={"/Tasks/" + list._id}>
+										<Link to={"/Task/" + list._id}>
 											<strong>
 												{list.assigned}
 											</strong>

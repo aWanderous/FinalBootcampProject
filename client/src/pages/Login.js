@@ -22,8 +22,8 @@ class Login extends Component {
 			.then((res) =>
 				this.setState({
 					lists: res.data,
-					assigned: [],
 					task: "",
+					assigned: [],
 					details: "",
 					link: ""
 				})

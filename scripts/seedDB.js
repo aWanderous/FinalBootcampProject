@@ -7,6 +7,9 @@ const weddingSeed = [
 	{
 		task: "Suit for groom",
 		details: "Suit up the groom",
+		assigned: [],
+  		link: "",
+ 		cost: ""
 	}
 ];
 
