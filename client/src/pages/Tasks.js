@@ -47,7 +47,7 @@ class Tasks extends Component {
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		if (this.state.task && this.state.details) {
-			API.saveTask({
+			API.saveTasks({
 				task: this.state.task,
 				assigned: this.state.assigned,
 				details: this.state.details,
