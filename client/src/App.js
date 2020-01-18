@@ -7,6 +7,7 @@ import NoMatch from "./pages/NoMatch";
 import Saved from "./pages/Saved";
 import Costs from "./pages/Costs";
 import Nav from "./components/Nav";
+import Guests from "./pages/Guests";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/Task" component={Saved} />
           <Route exact path="/Task/:id" component={Tasks} />
           <Route exact path="/Costs" component={Costs} />
+          <Route exact path="/Guests" component={Guests} />         
           <Route component={NoMatch} />
         </Switch>
       </div>
