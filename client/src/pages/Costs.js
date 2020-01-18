@@ -30,7 +30,7 @@ class Cost extends Component {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h1>details</h1>
+              <h1>Details</h1>
               <p>
                 {this.state.list.details}
               </p>

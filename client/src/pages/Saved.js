@@ -66,7 +66,7 @@ class Saved extends Component {
 									<ListItem key={list._id}>
 										<Link to={"/Task/" + list._id}>
 											<strong>
-												{list.task} assigned to {list.assigned}
+												{list.task}
 											</strong>
 										</Link>
 										<DeleteBtn onClick={() => this.deleteTask(list._id)} />

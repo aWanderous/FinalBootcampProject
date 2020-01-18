@@ -10,7 +10,6 @@ const weddingSeed = [
 		assigned: [],
   		link: "",
 		cost: "",
-		date: new Date(Date.now())
 	}
 ];
 

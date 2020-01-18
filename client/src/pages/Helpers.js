@@ -74,7 +74,7 @@ class Helpers extends Component {
 								))}
 							</List>
 						) : (
-							<h3>No Helpers to Display</h3>
+							<h3>No Helpers Assigned</h3>
 						)}
 			</Container>
 		);
