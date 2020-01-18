@@ -11,7 +11,6 @@ class Saved extends Component {
 	state = {
 		lists: [],
 		task: "",
-		assigned: [],
 		details: "",
 		link: ""
 	};
@@ -23,7 +22,7 @@ class Saved extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ lists: res.data, task: "", assigned: [], details: "" })
+				this.setState({ lists: res.data, task: "", details: "" })
 			)
 			.catch((err) => console.log(err));
 	};

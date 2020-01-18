@@ -10,10 +10,7 @@ import { List, ListItem } from "../components/List";
 class Helpers extends Component {
 	state = {
 		lists: [],
-		task: "",
 		assigned: [],
-		details: "",
-		link: ""
 	};
 
 	componentDidMount() {
@@ -23,7 +20,7 @@ class Helpers extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ lists: res.data, task: "", assigned: [], details: "" })
+				this.setState({ lists: res.data, assigned: []})
 			)
 			.catch((err) => console.log(err));
 	};

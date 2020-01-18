@@ -45,6 +45,16 @@ class Tasks extends Component {
           </Col>
         </Row>
         <Row>
+          <Col size="md-10 md-offset-1">
+            <article>
+              <h5>Costs</h5>
+              <p>
+                {this.state.list.cost}
+              </p>
+            </article>
+          </Col>
+        </Row>
+        <Row>
           <Col size="md-2">
             <Link to="/Task">← Back to Tasks</Link>
           </Col>
