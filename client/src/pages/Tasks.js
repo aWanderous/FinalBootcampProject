@@ -53,7 +53,7 @@ class Tasks extends Component {
 				details: this.state.details,
 				link: this.state.link
 			})
-				.then((res) => this.loadTasks())
+				.then(res => this.loadTasks())
 				.catch((err) => console.log(err));
 		}
 	};

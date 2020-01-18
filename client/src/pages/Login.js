@@ -48,7 +48,7 @@ class Login extends Component {
 		event.preventDefault();
 		if (this.state.task && this.state.details) {
 			API.saveTasks({
-				task: this.state.tasks,
+				task: this.state.task,
 				assigned: this.state.assigned,
 				details: this.state.details,
 				link: this.state.link

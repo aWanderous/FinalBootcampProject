@@ -2,7 +2,7 @@
   "name": "weddings",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:0812/",
+  "proxy": "http://localhost:2301/",
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
