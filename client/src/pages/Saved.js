@@ -64,9 +64,9 @@ class Saved extends Component {
 							<List>
 								{this.state.lists.map((list) => (
 									<ListItem key={list._id}>
-										<Link to={"/Tasks/" + list._id}>
+										<Link to={"/Task/" + list._id}>
 											<strong>
-												{list.task} done by {list.assigned}
+												{list.task} assigned to {list.assigned}
 											</strong>
 										</Link>
 										<DeleteBtn onClick={() => this.deleteTask(list._id)} />

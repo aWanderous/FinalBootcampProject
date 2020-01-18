@@ -1,114 +1,50 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
-import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Tasks extends Component {
-	state = {
-		lists: [],
-		task: "",
-		assigned: [],
-		details: "",
-		link: ""
-	};
+  state = {
+    list: {}
+  };
+  
+  componentDidMount() {
+    API.getTask(this.props.match.params.id)
+      .then(res => this.setState({ list: res.data }))
+      .catch(err => console.log(err));
+  }
 
-	componentDidMount() {
-		this.loadTasks();
-	}
-
-	loadTasks = () => {
-		API.getTasks()
-			.then((res) =>
-				this.setState({
-					lists: res.data,
-					assigned: [],
-					task: "",
-					details: "",
-					link: ""
-				})
-			)
-			.catch((err) => console.log(err));
-	};
-
-	deleteTask = (id) => {
-		API.deleteTask(id)
-			.then((res) => this.loadTasks())
-			.catch((err) => console.log(err));
-	};
-
-	handleInputChange = (event) => {
-		const { name, value } = event.target;
-		this.setState({
-			[name]: value
-		});
-	};
-
-	handleFormSubmit = (event) => {
-		event.preventDefault();
-		if (this.state.task && this.state.details) {
-			API.saveTasks({
-				task: this.state.task,
-				assigned: this.state.assigned,
-				details: this.state.details,
-				link: this.state.link
-			})
-				.then(res => this.loadTasks())
-				.catch((err) => console.log(err));
-		}
-	};
-
-	render() {
-		return (
-			<Container fluid>
-				<Jumbotron>
-					<h1>Adding a task</h1>
-				</Jumbotron>
-				<form>
-					<Row>
-						<Col size='md-6'>
-							<Input
-								value={this.state.task}
-								onChange={this.handleInputChange}
-								name='task'
-								placeholder='Task Name (required)'
-							/>
-						</Col>
-						<Col size='md-6'>
-							<Input
-								value={this.state.assigned}
-								onChange={this.handleInputChange}
-								name='assigned'
-								placeholder='Assigned to (optional)'
-							/>
-						</Col>
-					</Row>
-					<Row>
-						<Col size='md-6'>
-							<Input
-								value={this.state.link}
-								onChange={this.handleInputChange}
-								name='link'
-								placeholder='Link (required)'
-							/>
-						</Col>
-					</Row>
-					<TextArea
-						value={this.state.details}
-						onChange={this.handleInputChange}
-						name='details'
-						placeholder='details (required)'
-					/>
-					<FormBtn
-						disabled={!(this.state.task && this.state.details)}
-						onClick={this.handleFormSubmit}
-					>
-						Add Task
-					</FormBtn>
-				</form>
-			</Container>
-		);
-	}
+  render() {
+    return (
+      <Container fluid>
+        <Row>
+          <Col size="md-12">
+            <Jumbotron>
+              <h1>
+                {this.state.list.task} assigned to {this.state.list.assigned}
+              </h1>
+            </Jumbotron>
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-10 md-offset-1">
+            <article>
+              <h1>details</h1>
+              <p>
+                {this.state.list.details}
+              </p>
+            </article>
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-2">
+            <Link to="/saved">← Back to Tasks</Link>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default Tasks;
