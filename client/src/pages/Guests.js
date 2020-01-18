@@ -59,7 +59,7 @@ class Guests extends Component {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>Costs of Tasks</h1>
+					<h1>Invited Guests</h1>
 				</Jumbotron>
 					{this.state.lists.length ? (
 						<List>
@@ -67,7 +67,7 @@ class Guests extends Component {
 								<ListItem key={list._id}>
 									<Link to={"/Task/" + list._id}>
 										<strong>
-											{list.task} costs ${list.cost}
+											{list.task}plus 1 {list.cost}
 										</strong>
 									</Link>
 									<DeleteBtn onClick={() => this.deleteTask(list._id)} />

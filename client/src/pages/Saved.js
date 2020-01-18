@@ -63,7 +63,7 @@ class Saved extends Component {
 						<List>
 							{this.state.lists.map((list) => (
 								<ListItem key={list._id}>
-									<Link to={"/Task/" + list._id}>
+									<Link to={list.link}>
 										<strong>
 											{list.task}
 										</strong>
