@@ -23,7 +23,7 @@ class Helpers extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ list: res.data, task: "", assigned: "", details: "" })
+				this.setState({ lists: res.data, task: "", assigned: [], details: "" })
 			)
 			.catch((err) => console.log(err));
 	};
@@ -57,25 +57,25 @@ class Helpers extends Component {
 	render() {
 		return (
 			<Container fluid>
-						<Jumbotron>
-							<h1>Helpers</h1>
-						</Jumbotron>
-						{this.state.lists.length ? (
-							<List>
-								{this.state.lists.map((list) => (
-									<ListItem key={list._id}>
-										<Link to={"/Task/" + list._id}>
-											<strong>
-												{list.assigned}
-											</strong>
-										</Link>
-										<DeleteBtn onClick={() => this.deleteTask(list._id)} />
-									</ListItem>
-								))}
-							</List>
-						) : (
-							<h3>No Helpers Assigned</h3>
-						)}
+				<Jumbotron>
+					<h1>Helpers</h1>
+				</Jumbotron>
+					{this.state.lists.length ? (
+						<List>
+							{this.state.lists.map((list) => (
+								<ListItem key={list._id}>
+									<Link to={"/Task/" + list._id}>
+										<strong>
+											{list.assigned}
+										</strong>
+									</Link>
+									<DeleteBtn onClick={() => this.deleteTask(list._id)} />
+								</ListItem>
+							))}
+						</List>
+					) : (
+						<h3>No Helpers assigned</h3>
+					)}
 			</Container>
 		);
 	}

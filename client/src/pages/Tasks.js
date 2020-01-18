@@ -22,7 +22,7 @@ class Tasks extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {this.state.list.task} assigned to {this.state.list.assigned}
+                {this.state.list.task}
               </h1>
             </Jumbotron>
           </Col>
@@ -30,7 +30,14 @@ class Tasks extends Component {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h1>Details</h1>
+              <h4>assigned to {this.state.list.assigned}</h4>
+            </article>
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-10 md-offset-1">
+            <article>
+              <h3>Details</h3>
               <p>
                 {this.state.list.details}
               </p>
@@ -39,7 +46,7 @@ class Tasks extends Component {
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/saved">← Back to Tasks</Link>
+            <Link to="/Task">← Back to Tasks</Link>
           </Col>
         </Row>
       </Container>

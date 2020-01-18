@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 
@@ -12,6 +13,11 @@ function NoMatch() {
           </Jumbotron>
         </Col>
       </Row>
+      <Row>
+        <Col size="md-2">
+  				<Link to="/Task">← Back to Tasks</Link>
+  			</Col>
+			</Row>
     </Container>
   );
 }
