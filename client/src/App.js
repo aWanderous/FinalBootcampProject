@@ -7,6 +7,7 @@ import NoMatch from "./pages/NoMatch";
 import Saved from "./pages/Saved";
 import Costs from "./pages/Costs";
 import Guests from "./pages/Guests";
+import Songs from "./pages/Playlist";
 import Nav from "./components/Nav";
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
           <Route exact path="/Task" component={Saved} />
           <Route exact path="/Task/:id" component={Tasks} />
           <Route exact path="/Costs" component={Costs} />
-          <Route exact path="/Guest" component={Guests} />        
+          <Route exact path="/Guest" component={Guests} />
+          <Route exact path="/Song" component={Songs} />
           <Route component={NoMatch} />
         </Switch>
       </div>
