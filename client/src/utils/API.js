@@ -16,5 +16,17 @@ export default {
   // Saves a task to the database
   saveTasks: function(listData) {
     return axios.post("/api/task", listData);
-  }
+  },
+  // Gets all guests
+  getGuests: function() {
+    return axios.get("/api/guest");
+  },
+  // Deletes the guest with the given id
+  deleteGuest: function(id) {
+    return axios.delete("/api/guest/" + id);
+  },
+  // Saves a guest to the database
+  saveGuest: function(guestData) {
+    return axios.post("/api/guest", guestData);
+  },
 };

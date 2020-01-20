@@ -2,36 +2,32 @@ import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Container } from "../components/Grid";
+import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+import { Input, FormBtn } from "../components/Form";
 
 
 class Guests extends Component {
 	state = {
-		lists: [],
-		task: "",
-		assigned: [],
-		details: "",
-    link: "",
-    cost: ""
+		guests: [],
+		name: "",
 	};
 
 	componentDidMount() {
-		this.loadTasks();
+		this.loadGuests();
 	}
 
-	loadTasks = () => {
-		API.getTasks()
+	loadGuests = () => {
+		API.getGuests()
 			.then((res) =>
-				this.setState({ lists: res.data, task: "", assigned: [], details: "", cost: "" })
+				this.setState({ guests: res.data})
 			)
 			.catch((err) => console.log(err));
 	};
 
-	deleteTask = (id) => {
-		API.deleteTask(id)
-			.then((res) => this.loadTasks())
+	deleteGuest = (id) => {
+		API.deleteGuest(id)
+			.then((res) => this.loadGuests())
 			.catch((err) => console.log(err));
 	};
 
@@ -44,13 +40,11 @@ class Guests extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.task && this.state.details) {
-			API.saveTasks({
-				task: this.state.task,
-				assigned: this.state.assigned,
-				details: this.state.details
+		if (this.state.name) {
+			API.saveGuest({
+				name: this.state.name,
 			})
-				.then((res) => this.loadTasks())
+				.then((res) => this.loadGuests())
 				.catch((err) => console.log(err));
 		}
 	};
@@ -61,21 +55,37 @@ class Guests extends Component {
 				<Jumbotron>
 					<h1>Invited Guests</h1>
 				</Jumbotron>
-					{this.state.lists.length ? (
+					<form>
+					<Row>
+						<Col size='md-6'>
+							<Input
+								value={this.state.name}
+								onChange={this.handleInputChange}
+								name='name'
+								placeholder='Add Guest'
+							/>
+							<FormBtn
+						disabled={!(this.state.name)}
+						onClick={this.handleFormSubmit}
+					>
+						Add Guest
+					</FormBtn>
+						</Col>
+					</Row>
+					</form>
+					{this.state.guests.length ? (
 						<List>
-							{this.state.lists.map((list) => (
-								<ListItem key={list._id}>
-									<Link to={"/Task/" + list._id}>
+							{this.state.guests.map((guest) => (
+								<ListItem key={guest._id}>
 										<strong>
-											{list.task}plus 1 {list.cost}
+											{guest.name}
 										</strong>
-									</Link>
-									<DeleteBtn onClick={() => this.deleteTask(list._id)} />
+									<DeleteBtn onClick={() => this.deleteGuest(guest._id)} />
 								</ListItem>
 							))}
 						</List>
 					) : (
-						<h3>No Payments</h3>
+						<h3>No Guests Invited</h3>
 					)}
 			</Container>
 		);

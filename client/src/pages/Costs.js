@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -70,7 +69,6 @@ class Cost extends Component {
 											{list.task} costs ${list.cost}
 										</strong>
 									</Link>
-									<DeleteBtn onClick={() => this.deleteTask(list._id)} />
 								</ListItem>
 							))}
 						</List>

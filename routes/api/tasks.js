@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const taskController = require("../../controllers/taskController");
 
-// Matches with "/api/saved"
+// Matches with "/api/task"
 router.route("/")
   .get(taskController.findAll)
   .post(taskController.create);
 
-// Matches with "/api/tasks/:id"
+// Matches with "/api/task/:id"
 router
   .route("/:id")
   .get(taskController.findById)

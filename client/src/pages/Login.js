@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
@@ -103,7 +104,9 @@ class Login extends Component {
 						disabled={!(this.state.task && this.state.details)}
 						onClick={this.handleFormSubmit}
 					>
+					<Link to="/Task">
 						Add Task
+					</Link>
 					</FormBtn>
 				</form>
 			</Container>
