@@ -10,10 +10,7 @@ class Cost extends Component {
 	state = {
 		lists: [],
 		task: "",
-		assigned: [],
-		details: "",
-    link: "",
-    cost: ""
+    	cost: ""
 	};
 
 	componentDidMount() {
@@ -23,35 +20,9 @@ class Cost extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ lists: res.data, task: "", assigned: [], details: "", cost: "" })
+				this.setState({ lists: res.data, task: "", cost: "" })
 			)
 			.catch((err) => console.log(err));
-	};
-
-	deleteTask = (id) => {
-		API.deleteTask(id)
-			.then((res) => this.loadTasks())
-			.catch((err) => console.log(err));
-	};
-
-	handleInputChange = (event) => {
-		const { name, value } = event.target;
-		this.setState({
-			[name]: value
-		});
-	};
-
-	handleFormSubmit = (event) => {
-		event.preventDefault();
-		if (this.state.task && this.state.details) {
-			API.saveTasks({
-				task: this.state.task,
-				assigned: this.state.assigned,
-				details: this.state.details
-			})
-				.then((res) => this.loadTasks())
-				.catch((err) => console.log(err));
-		}
 	};
 
 	render() {

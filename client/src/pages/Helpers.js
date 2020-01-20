@@ -3,31 +3,32 @@ import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import { Container } from "../components/Grid";
+import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+import { Input, FormBtn } from "../components/Form";
 
 
 class Helpers extends Component {
 	state = {
-		lists: [],
-		assigned: [],
+		helpers: [],
+		name: "",
 	};
 
 	componentDidMount() {
-		this.loadTasks();
+		this.loadHelpers();
 	}
 
-	loadTasks = () => {
-		API.getTasks()
+	loadHelpers = () => {
+		API.getHelpers()
 			.then((res) =>
-				this.setState({ lists: res.data, assigned: []})
+				this.setState({ helpers: res.data, name: ""})
 			)
 			.catch((err) => console.log(err));
 	};
 
-	deleteTask = (id) => {
-		API.deleteTask(id)
-			.then((res) => this.loadTasks())
+	deleteHelper = (id) => {
+		API.deleteHelper(id)
+			.then((res) => this.loadHelpers())
 			.catch((err) => console.log(err));
 	};
 
@@ -40,13 +41,11 @@ class Helpers extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.task && this.state.details) {
-			API.saveTasks({
-				task: this.state.task,
-				assigned: this.state.assigned,
-				details: this.state.details
+		if (this.state.name) {
+			API.saveHelper({
+				name: this.state.name,
 			})
-				.then((res) => this.loadTasks())
+				.then((res) => this.loadHelpers())
 				.catch((err) => console.log(err));
 		}
 	};
@@ -57,16 +56,34 @@ class Helpers extends Component {
 				<Jumbotron>
 					<h1>Helpers</h1>
 				</Jumbotron>
-					{this.state.lists.length ? (
+				<form>
+					<Row>
+						<Col size='md-6'>
+							<Input
+								value={this.state.name}
+								onChange={this.handleInputChange}
+								name='name'
+								placeholder='Add Helper'
+							/>
+							<FormBtn
+						disabled={!(this.state.name)}
+						onClick={this.handleFormSubmit}
+					>
+						Add Helper
+					</FormBtn>
+						</Col>
+					</Row>
+					</form>
+					{this.state.helpers.length ? (
 						<List>
-							{this.state.lists.map((list) => (
-								<ListItem key={list._id}>
-									<Link to={"/Task/" + list._id}>
+							{this.state.helpers.map((helper) => (
+								<ListItem key={helper._id}>
+									<Link to={"/helper/" + helper._id}>
 										<strong>
-											{list.assigned}
+											{helper.name}
 										</strong>
 									</Link>
-									<DeleteBtn onClick={() => this.deleteTask(list._id)} />
+									<DeleteBtn onClick={() => this.deleteHelper(helper._id)} />
 								</ListItem>
 							))}
 						</List>

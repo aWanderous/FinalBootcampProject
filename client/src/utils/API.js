@@ -34,4 +34,14 @@ export default {
   saveSong: function(songData) {
     return axios.post("/api/song", songData);
   },
+  // Gets all helpers
+  getHelpers: function() {
+    return axios.get("/api/helper");
+  },
+  deleteHelper: function(id) {
+    return axios.delete("/api/helper/" + id);
+  },
+  saveHelper: function(songData) {
+    return axios.post("/api/helper", songData);
+  },
 };
