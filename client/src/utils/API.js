@@ -47,4 +47,7 @@ export default {
   saveHelper: function(songData) {
     return axios.post("/api/helper", songData);
   },
+  addHelper: function(listId) {
+    return axios.post("/api/task/add", {listId: listId})
+  }
 };

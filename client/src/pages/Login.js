@@ -9,7 +9,7 @@ class Login extends Component {
 	state = {
 		lists: [],
 		task: "",
-		assigned: [],
+		helper: [],
 		details: "",
 		link: ""
 	};
@@ -24,7 +24,7 @@ class Login extends Component {
 				this.setState({
 					lists: res.data,
 					task: "",
-					assigned: [],
+					helper: [],
 					details: "",
 					link: ""
 				})
@@ -77,9 +77,9 @@ class Login extends Component {
 						</Col>
 						<Col size='md-6'>
 							<Input
-								value={this.state.assigned}
+								value={this.state.helper}
 								onChange={this.handleInputChange}
-								name='assigned'
+								name='helper'
 								placeholder='Assigned to (optional)'
 							/>
 						</Col>

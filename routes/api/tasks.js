@@ -11,6 +11,9 @@ router
   .route("/:id")
   .get(taskController.findById)
   .put(taskController.update)
-  .delete(taskController.remove);
+  .delete(taskController.remove)
+
+  router.route("/add")
+  .post(taskController.addHelper)
 
 module.exports = router;

@@ -1,16 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const listSchema = new Schema({
+const taskSchema = new Schema({
   task: { type: String, required: true },
-  assigned: [String],
   details: { type: String, required: true },
   link: { type: String},
-  cost: { type: Number}
+  cost: { type: Number},
+  helpers: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Helper'
+  }]
 });
 
-const List = mongoose.model("List", listSchema);
+const Task = mongoose.model("Task", taskSchema);
 
 module.exports = {
-  List: List
+  Task: Task
 };

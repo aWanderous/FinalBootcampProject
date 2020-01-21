@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
-import Saved from "./pages/Saved";
 import Tasks from "./pages/Tasks";
+import Details from "./pages/Details";
 import Helpers from "./pages/Helpers";
 import Help from "./pages/Help";
 import NoMatch from "./pages/NoMatch";
@@ -18,8 +18,8 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/Task" component={Saved} />
-          <Route exact path="/Task/:id" component={Tasks} />
+          <Route exact path="/Task" component={Tasks} />
+          <Route exact path="/Task/:id" component={Details} />
           <Route exact path="/Helper" component={Helpers} />
           <Route exact path="/Helper/:id" component={Help} />
           <Route exact path="/Costs" component={Costs} />

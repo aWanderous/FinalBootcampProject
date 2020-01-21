@@ -1,67 +1,89 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import DeleteBtn from "../components/DeleteBtn";
+import AssignBtn from "../components/AssignBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import { Link } from "react-router-dom";
+import { Container } from "../components/Grid";
+import { List, ListItem } from "../components/List";
+
 
 class Tasks extends Component {
-  state = {
-    list: {}
-  };
-  
-  componentDidMount() {
-    API.getTask(this.props.match.params.id)
-      .then(res => this.setState({ list: res.data }))
-      .catch(err => console.log(err));
-  }
+	state = {
+		lists: [],
+		task: "",
+		details: "",
+		link: ""
+	};
 
-  render() {
-    return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron>
-              <h1>
-                {this.state.list.task}
-              </h1>
-            </Jumbotron>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h4>assigned to {this.state.list.assigned}</h4>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h3>Details</h3>
-              <p>
-                {this.state.list.details}
-              </p>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h5>Costs</h5>
-              <p>
-                {this.state.list.cost}
-              </p>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Link to="/Task">← Back to Tasks</Link>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+	componentDidMount() {
+		this.loadTasks();
+	}
+
+	loadTasks = () => {
+		API.getTasks()
+			.then((res) =>
+				this.setState({ lists: res.data, task: "", details: "" })
+			)
+			.catch((err) => console.log(err));
+	};
+
+	deleteTask = (id) => {
+		API.deleteTask(id)
+			.then((res) => this.loadTasks())
+			.catch((err) => console.log(err));
+	};
+
+	addHelper = (id) => {
+		API.addHelper(id);
+	} 
+
+	handleInputChange = (event) => {
+		const { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
+
+	handleFormSubmit = (event) => {
+		event.preventDefault();
+		if (this.state.task && this.state.details) {
+			API.saveTasks({
+				task: this.state.task,
+				assigned: this.state.assigned,
+				details: this.state.details
+			})
+				.then((res) => this.loadTasks())
+				.catch((err) => console.log(err));
+		}
+	};
+
+	render() {
+		return (
+			<Container fluid>
+				<Jumbotron>
+					<h1>The to-do List</h1>
+				</Jumbotron>
+					{this.state.lists.length ? (
+						<List>
+							{this.state.lists.map((list) => (
+								<ListItem key={list._id}>
+									<Link to={list.link}>
+										<strong>
+											{list.task}
+										</strong>
+									</Link>
+									<DeleteBtn onClick={() => this.deleteTask(list._id)} />
+									<AssignBtn onClick={() => this.addHelper(list._id)} />
+								</ListItem>
+							))}
+						</List>
+					) : (
+						<h3>No set Tasks to Display</h3>
+					)}
+			</Container>
+		);
+	}
 }
 
 export default Tasks;

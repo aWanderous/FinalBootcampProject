@@ -1,4 +1,4 @@
-const db = require("../models/helperList");
+const db = require("../models/helper");
 
 module.exports = {
   findAll: function(req, res) {
