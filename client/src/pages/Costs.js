@@ -8,8 +8,8 @@ import { List, ListItem } from "../components/List";
 
 class Cost extends Component {
 	state = {
-		lists: [],
-		task: "",
+		tasks: [],
+		taskName: "",
     	cost: ""
 	};
 
@@ -20,7 +20,7 @@ class Cost extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ lists: res.data, task: "", cost: "" })
+				this.setState({ tasks: res.data, taskName: "", cost: "" })
 			)
 			.catch((err) => console.log(err));
 	};
@@ -31,13 +31,13 @@ class Cost extends Component {
 				<Jumbotron>
 					<h1>Costs of Tasks</h1>
 				</Jumbotron>
-					{this.state.lists.length ? (
+					{this.state.tasks.length ? (
 						<List>
-							{this.state.lists.map((list) => (
-								<ListItem key={list._id}>
-									<Link to={"/Task/" + list._id}>
+							{this.state.tasks.map((task) => (
+								<ListItem key={task._id}>
+									<Link to={"/Task/" + task._id}>
 										<strong>
-											{list.task} costs ${list.cost}
+											{task.taskName} costs ${task.cost}
 										</strong>
 									</Link>
 								</ListItem>

@@ -11,7 +11,7 @@ import { Input, FormBtn } from "../components/Form";
 class Helpers extends Component {
 	state = {
 		helpers: [],
-		name: "",
+		helperName: "",
 	};
 
 	componentDidMount() {
@@ -21,7 +21,7 @@ class Helpers extends Component {
 	loadHelpers = () => {
 		API.getHelpers()
 			.then((res) =>
-				this.setState({ helpers: res.data, name: ""})
+				this.setState({ helpers: res.data, helperName: ""})
 			)
 			.catch((err) => console.log(err));
 	};
@@ -41,9 +41,9 @@ class Helpers extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.name) {
+		if (this.state.helperName) {
 			API.saveHelper({
-				name: this.state.name,
+				helperName: this.state.helperName,
 			})
 				.then((res) => this.loadHelpers())
 				.catch((err) => console.log(err));
@@ -60,13 +60,13 @@ class Helpers extends Component {
 					<Row>
 						<Col size='md-6'>
 							<Input
-								value={this.state.name}
+								value={this.state.helperName}
 								onChange={this.handleInputChange}
-								name='name'
+								name='helperName'
 								placeholder='Add Helper'
 							/>
 							<FormBtn
-						disabled={!(this.state.name)}
+						disabled={!(this.state.helperName)}
 						onClick={this.handleFormSubmit}
 					>
 						Add Helper
@@ -80,10 +80,10 @@ class Helpers extends Component {
 								<ListItem key={helper._id}>
 									<Link to={"/helper/" + helper._id}>
 										<strong>
-											{helper.name}
+											{helper.helperName}
 										</strong>
 									</Link>
-									<DeleteBtn onClick={() => this.deleteHelper(helper._id)} />
+									<DeleteBtn onClick={() => this.deleteHelper(helper._id)} />									
 								</ListItem>
 							))}
 						</List>

@@ -1,4 +1,4 @@
-const {task} = require("../models/task");
+const {Task} = require("../models/task");
 const {Helper} = require("../models/helper");
 
 module.exports = {
@@ -43,6 +43,6 @@ module.exports = {
   //   })
   // },
   addHelper: function(req, res){
-    Task.findById({_id: req.body.taskId}).populate('helpers').exec((err,task)=>res.json(task.helpers));
+    Task.findById({_id: req.body.taskId}).populate('helpers').exec((err,taskName)=>res.json(taskName.helpers));
   }
 };

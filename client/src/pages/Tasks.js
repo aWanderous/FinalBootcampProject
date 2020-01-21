@@ -10,8 +10,8 @@ import { List, ListItem } from "../components/List";
 
 class Tasks extends Component {
 	state = {
-		lists: [],
-		task: "",
+		tasks: [],
+		taskName: "",
 		details: "",
 		link: ""
 	};
@@ -23,7 +23,7 @@ class Tasks extends Component {
 	loadTasks = () => {
 		API.getTasks()
 			.then((res) =>
-				this.setState({ lists: res.data, task: "", details: "" })
+				this.setState({ tasks: res.data, taskName: "", details: "" })
 			)
 			.catch((err) => console.log(err));
 	};
@@ -47,10 +47,10 @@ class Tasks extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.task && this.state.details) {
+		if (this.state.taskName && this.state.details) {
 			API.saveTasks({
-				task: this.state.task,
-				assigned: this.state.assigned,
+				taskName: this.state.taskName,
+				helper: this.state.helper,
 				details: this.state.details
 			})
 				.then((res) => this.loadTasks())
@@ -64,17 +64,17 @@ class Tasks extends Component {
 				<Jumbotron>
 					<h1>The to-do List</h1>
 				</Jumbotron>
-					{this.state.lists.length ? (
+					{this.state.tasks.length ? (
 						<List>
-							{this.state.lists.map((list) => (
-								<ListItem key={list._id}>
-									<Link to={list.link}>
+							{this.state.tasks.map((task) => (
+								<ListItem key={task._id}>
+									<Link to={task.link}>
 										<strong>
-											{list.task}
+											{task.taskName}
 										</strong>
 									</Link>
-									<DeleteBtn onClick={() => this.deleteTask(list._id)} />
-									<AssignBtn onClick={() => this.addHelper(list._id)} />
+									<DeleteBtn onClick={() => this.deleteTask(task._id)} />
+									<AssignBtn onClick={() => this.addHelper(task._id)} />
 								</ListItem>
 							))}
 						</List>

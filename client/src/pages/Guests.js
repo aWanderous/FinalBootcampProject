@@ -10,7 +10,7 @@ import { Input, FormBtn } from "../components/Form";
 class Guests extends Component {
 	state = {
 		guests: [],
-		name: "",
+		GuestName: "",
 	};
 
 	componentDidMount() {
@@ -40,9 +40,9 @@ class Guests extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.name) {
+		if (this.state.guestName) {
 			API.saveGuest({
-				name: this.state.name,
+				guestName: this.state.guestName,
 			})
 				.then((res) => this.loadGuests())
 				.catch((err) => console.log(err));
@@ -59,13 +59,13 @@ class Guests extends Component {
 					<Row>
 						<Col size='md-6'>
 							<Input
-								value={this.state.name}
+								value={this.state.guestName}
 								onChange={this.handleInputChange}
-								name='name'
+								name='guestName'
 								placeholder='Add Guest'
 							/>
 							<FormBtn
-						disabled={!(this.state.name)}
+						disabled={!(this.state.guestName)}
 						onClick={this.handleFormSubmit}
 					>
 						Add Guest
@@ -78,7 +78,7 @@ class Guests extends Component {
 							{this.state.guests.map((guest) => (
 								<ListItem key={guest._id}>
 										<strong>
-											{guest.name}
+											{guest.guestName}
 										</strong>
 									<DeleteBtn onClick={() => this.deleteGuest(guest._id)} />
 								</ListItem>

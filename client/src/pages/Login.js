@@ -7,8 +7,8 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Login extends Component {
 	state = {
-		lists: [],
-		task: "",
+		tasks: [],
+		taskName: "",
 		helper: [],
 		details: "",
 		link: ""
@@ -22,8 +22,8 @@ class Login extends Component {
 		API.getTasks()
 			.then((res) =>
 				this.setState({
-					lists: res.data,
-					task: "",
+					tasks: res.data,
+					taskName: "",
 					helper: [],
 					details: "",
 					link: ""
@@ -47,10 +47,10 @@ class Login extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.task && this.state.details) {
+		if (this.state.taskName && this.state.details) {
 			API.saveTasks({
-				task: this.state.task,
-				assigned: this.state.assigned,
+				taskName: this.state.taskName,
+				helperName: this.state.helperName,
 				details: this.state.details,
 				link: this.state.link
 			})
@@ -69,17 +69,17 @@ class Login extends Component {
 					<Row>
 						<Col size='md-6'>
 							<Input
-								value={this.state.task}
+								value={this.state.taskName}
 								onChange={this.handleInputChange}
-								name='task'
+								name='taskName'
 								placeholder='Task Name (required)'
 							/>
 						</Col>
 						<Col size='md-6'>
 							<Input
-								value={this.state.helper}
+								value={this.state.helperName}
 								onChange={this.handleInputChange}
-								name='helper'
+								name='helperName'
 								placeholder='Assigned to (optional)'
 							/>
 						</Col>
@@ -101,7 +101,7 @@ class Login extends Component {
 						placeholder='details (required)'
 					/>
 					<FormBtn
-						disabled={!(this.state.task && this.state.details)}
+						disabled={!(this.state.taskName && this.state.details)}
 						onClick={this.handleFormSubmit}
 					>
 					<Link to="/Task">
