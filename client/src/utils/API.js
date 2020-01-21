@@ -38,6 +38,9 @@ export default {
   getHelpers: function() {
     return axios.get("/api/helper");
   },
+  getHelper: function(id) {
+    return axios.get("/api/helper/" + id);
+  },
   deleteHelper: function(id) {
     return axios.delete("/api/helper/" + id);
   },
