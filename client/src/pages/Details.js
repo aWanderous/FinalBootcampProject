@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import { Input, FormBtn } from "../components/Form";
 
 class Details extends Component {
   state = {
-    list: {}
+    task: {}
   };
   
   componentDidMount() {
     API.getTask(this.props.match.params.id)
-      .then(res => this.setState({ list: res.data }))
+      .then(res => this.setState({ task: res.data }))
       .catch(err => console.log(err));
   }
 
@@ -22,7 +22,7 @@ class Details extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {this.state.list.taskName}
+                {this.state.task.taskName}
               </h1>
             </Jumbotron>
           </Col>
@@ -30,7 +30,13 @@ class Details extends Component {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h4>assigned to {this.state.list.helper}</h4>
+              <h4>
+                {this.state.task.helper ? (
+                "Assign to " + this.state .task.helper
+                ) : (
+                  "Task not yet assigned."                 
+                )}
+                </h4>
             </article>
           </Col>
         </Row>
@@ -39,7 +45,7 @@ class Details extends Component {
             <article>
               <h3>Details</h3>
               <p>
-                {this.state.list.details}
+                {this.state.task.details}
               </p>
             </article>
           </Col>
@@ -49,14 +55,9 @@ class Details extends Component {
             <article>
               <h5>Costs</h5>
               <p>
-                {this.state.list.cost}
+                {this.state.task.cost}
               </p>
             </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Link to="/Task">← Back to Tasks</Link>
           </Col>
         </Row>
       </Container>

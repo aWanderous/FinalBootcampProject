@@ -10,10 +10,7 @@ import { List, ListItem } from "../components/List";
 class Help extends Component {
   state = {
     helper: {},
-    task: {},
-		taskName: "",
-		details: "",
-		link: ""
+    tasks: [],
 
   };
   
@@ -44,7 +41,7 @@ class Help extends Component {
           </Row>
               {this.state.tasks.length ? (
 						<List>
-							{this.state.tasks.map((task) => (
+							{this.state.helper.tasks.map((task) => (
 								<ListItem key={task._id}>
 									<Link to={task.link}>
 										<strong>
