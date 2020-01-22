@@ -1,41 +1,117 @@
-import React, { Component } from 'react';
-import { withAuth } from '@okta/okta-react';
+import React, { Component } from "react";
+import Jumbotron from "../components/Jumbotron";
+import API from "../utils/API";
+import { Link } from "react-router-dom";
+import { Col, Row, Container } from "../components/Grid";
+import { Input, TextArea, FormBtn } from "../components/Form";
 
-export default withAuth(class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { authenticated: null };
-    this.checkAuthentication = this.checkAuthentication.bind(this);
-    this.checkAuthentication();
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-  }
+class Login extends Component {
+	state = {
+		tasks: [],
+		taskName: "",
+		helper: [],
+		details: "",
+		link: ""
+	};
 
-  async checkAuthentication() {
-    const authenticated = await this.props.auth.isAuthenticated();
-    if (authenticated !== this.state.authenticated) {
-      this.setState({ authenticated });
-    }
-  }
+	componentDidMount() {
+		this.loadTasks();
+	}
 
-  componentDidUpdate() {
-    this.checkAuthentication();
-  }
+	loadTasks = () => {
+		API.getTasks()
+			.then((res) =>
+				this.setState({
+					tasks: res.data,
+					taskName: "",
+					helper: [],
+					details: "",
+					link: ""
+				})
+			)
+			.catch((err) => console.log(err));
+	};
 
-  async login() {
-    // Redirect to '/' after login
-    this.props.auth.login('/');
-  }
+	deleteTask = (id) => {
+		API.deleteTask(id)
+			.then((res) => this.loadTasks())
+			.catch((err) => console.log(err));
+	};
 
-  async logout() {
-    // Redirect to '/' after logout
-    this.props.auth.logout('/');
-  }
+	handleInputChange = (event) => {
+		const { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
 
-  render() {
-    if (this.state.authenticated === null) return null;
-    return this.state.authenticated ?
-      <button onClick={this.logout}>Logout</button> :
-      <button onClick={this.login}>Login</button>;
-  }
-});
+	handleFormSubmit = (event) => {
+		event.preventDefault();
+		if (this.state.taskName && this.state.details) {
+			API.saveTasks({
+				taskName: this.state.taskName,
+				helperName: this.state.helperName,
+				details: this.state.details,
+				link: this.state.link
+			})
+				.then((res) => this.loadTasks())
+				.catch((err) => console.log(err));
+		}
+	};
+
+	render() {
+		return (
+			<Container fluid>
+				<Jumbotron>
+					<h1>Adding a task</h1>
+				</Jumbotron>
+				<form>
+					<Row>
+						<Col size='md-6'>
+							<Input
+								value={this.state.taskName}
+								onChange={this.handleInputChange}
+								name='taskName'
+								placeholder='Task Name (required)'
+							/>
+						</Col>
+						<Col size='md-6'>
+							<Input
+								value={this.state.helperName}
+								onChange={this.handleInputChange}
+								name='helperName'
+								placeholder='Assigned to (optional)'
+							/>
+						</Col>
+					</Row>
+					<Row>
+						<Col size='md-6'>
+							<Input
+								value={this.state.link}
+								onChange={this.handleInputChange}
+								name='link'
+								placeholder='Link (required)'
+							/>
+						</Col>
+					</Row>
+					<TextArea
+						value={this.state.details}
+						onChange={this.handleInputChange}
+						name='details'
+						placeholder='details (required)'
+					/>
+					<FormBtn
+						disabled={!(this.state.taskName && this.state.details)}
+						onClick={this.handleFormSubmit}
+					>
+					<Link to="/Task">
+						Add Task
+					</Link>
+					</FormBtn>
+				</form>
+			</Container>
+		);
+	}
+}
+
+export default Login;

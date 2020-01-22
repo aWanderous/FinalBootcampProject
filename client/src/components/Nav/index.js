@@ -3,8 +3,8 @@ import "./style.css";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-      <a className="navbar-brand" href="/">
+    <nav className="navbar navbar-expand-lg bg-secondary">
+      <a className="navbar-brand" id="title" href="/">
         I.DU
       </a>
       <a className="navbar-brand" href="/Task">

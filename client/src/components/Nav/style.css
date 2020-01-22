@@ -1,3 +1,10 @@
-.navbar-brand{
+.navbar-brand {
     font-family: 'PT Serif', serif;
+    color: ghostwhite;
+}
+
+#title{
+    font-size: larger;
+    font-weight: bolder;
+    color: purple;
 }
