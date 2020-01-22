@@ -43,6 +43,10 @@ module.exports = {
   //   })
   // },
   addHelper: function(req, res){
-    Task.findById({_id: req.body.taskId}).populate('helpers').exec((err,taskName)=>res.json(taskName.helpers));
+    console.log(req.body.taskId)
+    Task
+      .findById({ _id: req.body.taskId })
+      .populate('helpers')
+      .exec((err,task)=> res.json(task.helpers));
   }
 };

@@ -68,7 +68,7 @@ class Tasks extends Component {
 						<List>
 							{this.state.tasks.map((task) => (
 								<ListItem key={task._id}>
-									<Link to={task.link}>
+									<Link to={task.link ? task.link : "/Task/" + task._id}>
 										<strong>
 											{task.taskName}
 										</strong>
