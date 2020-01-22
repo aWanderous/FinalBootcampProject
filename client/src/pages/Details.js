@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Input, FormBtn } from "../components/Form";
+import { Input } from "../components/Form";
+import AssignBtn from "../components/AssignBtn";
 
 class Details extends Component {
   state = {
@@ -11,9 +12,27 @@ class Details extends Component {
   
   componentDidMount() {
     API.getTask(this.props.match.params.id)
-      .then(res => this.setState({ task: res.data }))
+      .then(res => this.setState({ task: res.data}))
       .catch(err => console.log(err));
-  }
+  };
+
+  addHelper = (helper) => {
+		API.addHelper(helper);
+	};
+
+  updateTask = (id) => {
+		API.updateTask(id)
+			.then((res) => this.loadTasks())
+			.catch((err) => console.log(err));
+  };
+  
+  handleInputChange = (event) => {
+		const { name, value } = event.target;
+		this.setState({
+			[name]: value
+    });
+    console.log(this.state.task.helper)
+	};
 
   render() {
     return (
@@ -32,7 +51,7 @@ class Details extends Component {
             <article>
               <h4>
                 {this.state.task.helper ? (
-                "Assign to " + this.state .task.helper
+                "Assign to " + this.state.task.helper
                 ) : (
                   "Task not yet assigned."                 
                 )}
@@ -40,6 +59,19 @@ class Details extends Component {
             </article>
           </Col>
         </Row>
+        <form>
+					<Row>
+						<Col size='md-6'>
+							<Input
+								value={this.state.helper}
+								onChange={this.handleInputChange}
+								name='helper'
+								placeholder='Add Helper'
+							/>
+							<AssignBtn onClick={() => this.updateTask(this.state.helper)} />
+						</Col>
+					</Row>
+					</form>
         <Row>
           <Col size="md-10 md-offset-1">
             <article>

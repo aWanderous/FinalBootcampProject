@@ -6,10 +6,7 @@ const taskSchema = new Schema({
   details: { type: String, required: true },
   link: { type: String},
   cost: { type: Number},
-  helpers: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Helper'
-  }]
+  helper: {type: String, ref: 'Helper'}
 });
 
 const Task = mongoose.model("Task", taskSchema);
@@ -17,3 +14,6 @@ const Task = mongoose.model("Task", taskSchema);
 module.exports = {
   Task: Task
 };
+
+// type: mongoose.Schema.Types.ObjectId,
+// ref: 'Helper'

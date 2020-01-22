@@ -14,6 +14,9 @@ export default {
   saveTasks: function(taskData) {
     return axios.post("/api/task", taskData);
   },
+  updateTask: function(id) {
+    return axios.update("/api/task/" + id);
+  },
   // Gets all guests
   getGuests: function() {
     return axios.get("/api/guest");
@@ -47,8 +50,8 @@ export default {
   saveHelper: function(songData) {
     return axios.post("/api/helper", songData);
   },
-  addHelper: function(taskId) {
-    return axios.post("/api/task/add", {taskId: taskId})
+  addHelper: function(helper) {
+    return axios.post("/api/task/add", {helper: helper})
   },
   addTask: function(helperId) {
     return axios.post("/api/helper/add", {helperId: helperId})

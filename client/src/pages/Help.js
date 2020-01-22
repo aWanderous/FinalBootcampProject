@@ -16,7 +16,7 @@ class Help extends Component {
   
   componentDidMount() {
     API.getHelper(this.props.match.params.id)
-      .then(res => this.setState({ helper: res.data }))
+      .then(res => this.setState({ helper: res.data, tasks: [] }))
       .catch(err => console.log(err));
   }
 
@@ -27,7 +27,7 @@ class Help extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {this.state.helper.helperName}
+                {this.state.helper}
               </h1>
             </Jumbotron>
           </Col>
@@ -56,11 +56,6 @@ class Help extends Component {
 					) : (
 						<h3>No set Tasks to Display</h3>
 					)}
-        <Row>
-          <Col size="md-2">
-            <Link to="/Helper">← Back to Helpers</Link>
-          </Col>
-        </Row>
       </Container>
     );
   }

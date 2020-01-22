@@ -9,7 +9,7 @@ class Login extends Component {
 	state = {
 		tasks: [],
 		taskName: "",
-		helper: [],
+		helper: "",
 		details: "",
 		link: ""
 	};
@@ -24,7 +24,7 @@ class Login extends Component {
 				this.setState({
 					tasks: res.data,
 					taskName: "",
-					helper: [],
+					helper: "",
 					details: "",
 					link: ""
 				})
@@ -50,7 +50,7 @@ class Login extends Component {
 		if (this.state.taskName && this.state.details) {
 			API.saveTasks({
 				taskName: this.state.taskName,
-				helperName: this.state.helperName,
+				helper: this.state.helper,
 				details: this.state.details,
 				link: this.state.link
 			})
@@ -77,9 +77,9 @@ class Login extends Component {
 						</Col>
 						<Col size='md-6'>
 							<Input
-								value={this.state.helperName}
+								value={this.state.helper}
 								onChange={this.handleInputChange}
-								name='helperName'
+								name='helper'
 								placeholder='Assigned to (optional)'
 							/>
 						</Col>
