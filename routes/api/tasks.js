@@ -15,6 +15,6 @@ router
 
 router
   .route("/add")
-  .post(taskController.addHelper);
+  .post(taskController.addHelper)
 
 module.exports = router;

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Helpers from "../pages/Helpers";
 
 export default {
   // Gets all tasks
@@ -14,8 +15,9 @@ export default {
   saveTasks: function(taskData) {
     return axios.post("/api/task", taskData);
   },
-  updateTask: function(id) {
-    return axios.update("/api/task/" + id);
+  updateTask: function(id, helper) {
+    console.log("ID -------",id)
+    return axios.put("/api/task/"+id, helper);
   },
   // Gets all guests
   getGuests: function() {
@@ -50,8 +52,8 @@ export default {
   saveHelper: function(songData) {
     return axios.post("/api/helper", songData);
   },
-  addHelper: function(helper) {
-    return axios.post("/api/task/add", {helper: helper})
+  addHelper: function(taskId) {
+    return axios.post("/api/task/add", {taskId: taskId})
   },
   addTask: function(helperId) {
     return axios.post("/api/helper/add", {helperId: helperId})

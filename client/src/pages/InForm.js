@@ -24,7 +24,7 @@ class InForm extends Component {
 				this.setState({
 					tasks: res.data,
 					taskName: "",
-					helper: [],
+					helper: "",
 					details: "",
 					link: ""
 				})
@@ -77,9 +77,9 @@ class InForm extends Component {
 						</Col>
 						<Col size='md-6'>
 							<Input
-								value={this.state.helperName}
+								value={this.state.helper}
 								onChange={this.handleInputChange}
-								name='helperName'
+								name='helper'
 								placeholder='Assigned to (optional)'
 							/>
 						</Col>

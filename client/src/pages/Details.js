@@ -12,27 +12,36 @@ class Details extends Component {
   
   componentDidMount() {
     API.getTask(this.props.match.params.id)
-      .then(res => this.setState({ task: res.data}))
-      .catch(err => console.log(err));
-  };
-
-  addHelper = (helper) => {
-		API.addHelper(helper);
-	};
-
-  updateTask = (id) => {
-		API.updateTask(id)
-			.then((res) => this.loadTasks())
-			.catch((err) => console.log(err));
+    .then(res => this.setState({ task: res.data}))
+    .catch(err => console.log(err));
   };
   
+  handleChange(event) {
+    var newState = {};
+    newState[event.target.type] = event.target.value;
+    this.setState(newState);
+  };
+  
+  updateTask = () => {
+		if (this.state.helper) {
+			API.updateTask(this.props.match.params.id,{ helper: this.state.helper })
+				.then((res) => this.loadTasks())
+				.catch((err) => console.log(err));
+		}
+    console.log(this.state.task)
+    console.log(this.state.helper)
+	};
+  
   handleInputChange = (event) => {
+    console.log(event.target)
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value
     });
-    console.log(this.state.task.helper)
-	};
+  };
+  // addHelper = addHelper = (id) => {
+	// 	API.addHelper(id);
+	// } 
 
   render() {
     return (

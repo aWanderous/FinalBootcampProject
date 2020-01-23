@@ -41,9 +41,9 @@ class Helpers extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		if (this.state.helperName) {
+		if (this.state.helper) {
 			API.saveHelper({
-				helperName: this.state.helperName,
+				helper: this.state.helper,
 			})
 				.then((res) => this.loadHelpers())
 				.catch((err) => console.log(err));
