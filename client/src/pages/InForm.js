@@ -9,7 +9,7 @@ class InForm extends Component {
 	state = {
 		tasks: [],
 		taskName: "",
-		helper: [],
+		helper: "",
 		details: "",
 		link: ""
 	};

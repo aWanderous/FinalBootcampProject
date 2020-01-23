@@ -34,9 +34,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-    addHelper: function(req, res){
+  addHelper: function(req, res){
       console.log(req.body.taskId)
-      Task
+    Task
       .findById({ _id: req.body.taskId })
       .populate('helpers')
       .exec((err,task)=> res.json(task.helper));
