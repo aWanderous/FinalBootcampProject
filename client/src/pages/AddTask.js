@@ -11,31 +11,6 @@ class InForm extends Component {
 		taskName: "",
 		helper: "",
 		details: "",
-		link: ""
-	};
-
-	componentDidMount() {
-		this.loadTasks();
-	}
-
-	loadTasks = () => {
-		API.getTasks()
-			.then((res) =>
-				this.setState({
-					tasks: res.data,
-					taskName: "",
-					helper: "",
-					details: "",
-					link: ""
-				})
-			)
-			.catch((err) => console.log(err));
-	};
-
-	deleteTask = (id) => {
-		API.deleteTask(id)
-			.then((res) => this.loadTasks())
-			.catch((err) => console.log(err));
 	};
 
 	handleInputChange = (event) => {
@@ -52,7 +27,6 @@ class InForm extends Component {
 				taskName: this.state.taskName,
 				helperName: this.state.helperName,
 				details: this.state.details,
-				link: this.state.link
 			})
 				.then((res) => this.loadTasks())
 				.catch((err) => console.log(err));
@@ -81,16 +55,6 @@ class InForm extends Component {
 								onChange={this.handleInputChange}
 								name='helper'
 								placeholder='Assigned to (optional)'
-							/>
-						</Col>
-					</Row>
-					<Row>
-						<Col size='md-6'>
-							<Input
-								value={this.state.link}
-								onChange={this.handleInputChange}
-								name='link'
-								placeholder='Link (required)'
 							/>
 						</Col>
 					</Row>

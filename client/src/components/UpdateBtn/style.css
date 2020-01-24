@@ -1,6 +1,7 @@
-.assign-btn {
+.update-btn {
   float: right;
   color: blueviolet;
   margin-right: 10px;
   font-family: 'Dancing Script', cursive;
+  cursor: pointer;
 }

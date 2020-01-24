@@ -3,7 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Input } from "../components/Form";
-import AssignBtn from "../components/AssignBtn";
+import UpdateBtn from "../components/UpdateBtn";
 
 class Details extends Component {
   state = {
@@ -24,8 +24,8 @@ class Details extends Component {
   
   updateTask = () => {
     window.location.reload(false);
-		if (this.state.helper) {
-			API.updateTask(this.props.match.params.id,{ helper: this.state.helper })
+		if (this.state.helper || this.state.cost) {
+			API.updateTask(this.props.match.params.id,{ helper: this.state.helper, cost: this.state.cost })
 				.then((res) => this.loadTasks())
 				.catch((err) => console.log(err));
 		}
@@ -38,9 +38,6 @@ class Details extends Component {
 			[name]: value
     });
   };
-  // addHelper = addHelper = (id) => {
-	// 	API.addHelper(id);
-	// } 
 
   render() {
     return (
@@ -76,7 +73,7 @@ class Details extends Component {
 								name='helper'
 								placeholder='Add A Helper'
 							/>
-							<AssignBtn onClick={() => this.updateTask(this.state.helper)} />
+							<UpdateBtn onClick={() => this.updateTask(this.state.helper)} />
 						</Col>
 					</Row>
 					</form>
@@ -95,11 +92,28 @@ class Details extends Component {
             <article>
               <h5>Costs</h5>
               <p>
-                {this.state.task.cost}
+              {this.state.task.cost ? (
+                "$" + this.state.task.cost
+                ) : (
+                  "Cost not yet determined."                 
+                )}
               </p>
             </article>
           </Col>
         </Row>
+        <form>
+					<Row>
+						<Col size='md-6'>
+							$<Input
+								value={this.state.cost}
+								onChange={this.handleInputChange}
+								name='cost'
+								placeholder='cost'
+							/>
+							<UpdateBtn onClick={() => this.updateTask(this.state.cost)} />
+						</Col>
+					</Row>
+				</form>
       </Container>
     );
   }

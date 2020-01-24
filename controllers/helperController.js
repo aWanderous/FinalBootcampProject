@@ -32,12 +32,5 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
-  addTask: function(req, res){
-    console.log(req.body.helperId)
-    Helper
-      .findById({_id: req.body.helperId})
-      .populate('tasks')
-      .exec((err,helper) => res.json(helper.tasks));
   }
 };
