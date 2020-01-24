@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
   taskName: { type: String, required: true },
   details: { type: String, required: true },
-  link: { type: String},
   cost: { type: Number},
   helper: {type: String},
-  info: { type: String}
+  note: { type: String},
+  link: { type: String}
 });
 
 const Task = mongoose.model("Task", taskSchema);

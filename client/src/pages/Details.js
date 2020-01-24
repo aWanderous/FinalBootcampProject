@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Input } from "../components/Form";
-import DeleteBtn from "../components/DeleteBtn";
+import { Input, TextArea, } from "../components/Form";
+import RemoveBtn from "../components/RemoveBtn";
 import UpdateBtn from "../components/UpdateBtn";
 
 class Details extends Component {
@@ -30,6 +30,13 @@ class Details extends Component {
         .catch((err) => console.log(err));
   };
 
+  deleteNote = () => {	
+    window.location.reload(false);
+			API.updateTask(this.props.match.params.id,{ note: ""})
+				.then((res) => this.loadTasks())
+        .catch((err) => console.log(err));
+  };
+
   deleteCost = () => {	
     window.location.reload(false);
 			API.updateTask(this.props.match.params.id,{ cost: ""})
@@ -39,8 +46,8 @@ class Details extends Component {
 
   updateTask = () => {
     window.location.reload(false);
-		if (this.state.helper || this.state.cost) {
-			API.updateTask(this.props.match.params.id,{ helper: this.state.helper, cost: this.state.cost })
+		if (this.state.helper || this.state.cost || this.state.note) {
+			API.updateTask(this.props.match.params.id,{ helper: this.state.helper, cost: this.state.cost, note: this.state.note })
 				.then((res) => this.loadTasks())
 				.catch((err) => console.log(err));
 		}
@@ -64,34 +71,7 @@ class Details extends Component {
           </Col>
         </Row>
         <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h4>
-                {this.state.task.helper ? (
-                "Assign to " + this.state.task.helper
-                ) : (
-                  "Task not yet assigned."                 
-                )}
-                </h4>
-            </article>
-          </Col>
-        </Row>
-        <form>
-					<Row>
-						<Col size='md-6'>
-							<Input
-								value={this.state.helper}
-								onChange={this.handleInputChange}
-								name='helper'
-								placeholder='Add A Helper'
-							/>
-              <DeleteBtn onClick={() => this.deleteHelper(this.state.helper)} />									
-							<UpdateBtn onClick={() => this.updateTask(this.state.helper)} />
-						</Col>
-					</Row>
-					</form>
-        <Row>
-          <Col size="md-10 md-offset-1">
+          <Col size="md-12 md-offset-1">
             <article>
               <h3>Details</h3>
               <p>
@@ -101,33 +81,73 @@ class Details extends Component {
           </Col>
         </Row>
         <Row>
-          <Col size="md-10 md-offset-1">
+          <Col size="md-6 md-offset-1">
             <article>
-              <h5>Costs</h5>
-              <p>
+              <h4>
+                {this.state.task.helper ? (
+                "Assign to " + this.state.task.helper
+                ) : (
+                  "Task not yet assigned."                 
+                )}
+                </h4>
+            </article>
+        <form>
+							<Input
+								value={this.state.helper}
+								onChange={this.handleInputChange}
+								name='helper'
+								placeholder='Add A Helper'
+							/>
+              <RemoveBtn onClick={() => this.deleteHelper(this.state.helper)} />									
+							<UpdateBtn onClick={() => this.updateTask(this.state.helper)} />
+					</form>
+						</Col>
+          <Col size="md-6 md-offset-1">
+            <article>
+              <h4>
               {this.state.task.cost ? (
-                "$" + this.state.task.cost
+                "This costs : $" + this.state.task.cost
                 ) : (
                   "Cost not yet determined."                 
                 )}
-              </p>
+              </h4>
             </article>
-          </Col>
-        </Row>
         <form>
-					<Row>
-						<Col size='md-6'>
-							$<Input
+							<Input
 								value={this.state.cost}
 								onChange={this.handleInputChange}
 								name='cost'
 								placeholder='cost'
 							/>
-              <DeleteBtn onClick={() => this.deleteCost(this.state.cost)} />									
+              <RemoveBtn onClick={() => this.deleteCost(this.state.cost)} />									
 							<UpdateBtn onClick={() => this.updateTask(this.state.cost)} />
+          </form>
 						</Col>
 					</Row>
-				</form>
+          <Row>
+          <Col size="md-6">
+            <h4>
+              Notes
+            </h4>
+            <p>
+          {this.state.task.note ? (
+           this.state.task.note
+                ) : (
+                  ""                 
+                )}
+                </p>
+          </Col>
+            <Col size="md-6">
+          <TextArea
+						value={this.state.note}
+						onChange={this.handleInputChange}
+						name='note'
+						placeholder='notes on your wedding'
+					/>
+					<RemoveBtn onClick={() => this.deleteNote(this.state.note)} />									
+							<UpdateBtn onClick={() => this.updateTask(this.state.note)} />
+          </Col>
+          </Row>
       </Container>
     );
   }

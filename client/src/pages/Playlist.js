@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
+import RemoveBtn from "../components/RemoveBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
@@ -89,7 +89,7 @@ class Songs extends Component {
 										<strong>
 											{song.title} by {song.artist}
 										</strong>
-									<DeleteBtn onClick={() => this.deleteSong(song._id)} />
+									<RemoveBtn onClick={() => this.deleteSong(song._id)} />
 								</ListItem>
 							))}
 						</List>
