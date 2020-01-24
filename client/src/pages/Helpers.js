@@ -29,7 +29,7 @@ class Helper extends Component {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>Assigning of Tasks</h1>
+					Assigning of Tasks
 				</Jumbotron>
 						<List>
 							{this.state.tasks.map((task) => (

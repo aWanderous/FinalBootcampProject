@@ -56,7 +56,7 @@ class Songs extends Component {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>Songs Playlist</h1>
+					Songs Playlist
 				</Jumbotron>
 					<form>
 					<Row>

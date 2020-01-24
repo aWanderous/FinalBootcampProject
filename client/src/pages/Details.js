@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Input } from "../components/Form";
+import DeleteBtn from "../components/DeleteBtn";
 import UpdateBtn from "../components/UpdateBtn";
 
 class Details extends Component {
@@ -22,6 +23,20 @@ class Details extends Component {
     this.setState(newState);
   };
   
+  deleteHelper = () => {	
+    window.location.reload(false);
+			API.updateTask(this.props.match.params.id,{ helper: ""})
+				.then((res) => this.loadTasks())
+        .catch((err) => console.log(err));
+  };
+
+  deleteCost = () => {	
+    window.location.reload(false);
+			API.updateTask(this.props.match.params.id,{ cost: ""})
+				.then((res) => this.loadTasks())
+        .catch((err) => console.log(err));
+  };
+
   updateTask = () => {
     window.location.reload(false);
 		if (this.state.helper || this.state.cost) {
@@ -45,9 +60,7 @@ class Details extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>
                 {this.state.task.taskName}
-              </h1>
             </Jumbotron>
           </Col>
         </Row>
@@ -73,6 +86,7 @@ class Details extends Component {
 								name='helper'
 								placeholder='Add A Helper'
 							/>
+              <DeleteBtn onClick={() => this.deleteHelper(this.state.helper)} />									
 							<UpdateBtn onClick={() => this.updateTask(this.state.helper)} />
 						</Col>
 					</Row>
@@ -110,6 +124,7 @@ class Details extends Component {
 								name='cost'
 								placeholder='cost'
 							/>
+              <DeleteBtn onClick={() => this.deleteCost(this.state.cost)} />									
 							<UpdateBtn onClick={() => this.updateTask(this.state.cost)} />
 						</Col>
 					</Row>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import {Container } from "../components/Grid";
+import Footer from "../components/Footer";
 
 class Login extends Component {
 	
@@ -8,9 +9,10 @@ class Login extends Component {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>login</h1>
+					login
 				</Jumbotron>
-					</Container>
+				<Footer/>
+			</Container>
 		);
 	}
 }

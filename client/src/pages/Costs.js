@@ -29,7 +29,7 @@ class Cost extends Component {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>Costs of Tasks</h1>
+					Costs of Tasks
 				</Jumbotron>
 					{this.state.tasks.length ? (
 						<List>

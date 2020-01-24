@@ -25,17 +25,11 @@ class Tasks extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	deleteTask = (id) => {
-		API.deleteTask(id)
-			.then((res) => this.loadTasks())
-			.catch((err) => console.log(err));
-	};
-
 	render() {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>The to-do List</h1>
+					To-do List
 				</Jumbotron>
 					{this.state.tasks.length ? (
 						<List>

@@ -37,7 +37,7 @@ class InForm extends Component {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>Adding a task</h1>
+					Adding a task
 				</Jumbotron>
 				<form>
 					<Row>

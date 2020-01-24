@@ -54,7 +54,7 @@ class Guests extends Component {
 		return (
 			<Container fluid>
 				<Jumbotron>
-					<h1>Invited Guests</h1>
+					Invited Guests
 				</Jumbotron>
 					<form>
 					<Row>
