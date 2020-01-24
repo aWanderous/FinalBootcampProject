@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
-import InForm from "./pages/InForm";
+import AddTask from "./pages/AddTask";
 import Tasks from "./pages/Tasks";
 import Details from "./pages/Details";
 import Helpers from "./pages/Helpers";
@@ -19,7 +19,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/inform" component={InForm} />
+          <Route exact path="/AddTask" component={AddTask} />
           <Route exact path="/Task" component={Tasks} />
           <Route exact path="/Task/:id" component={Details} />
           <Route exact path="/Helper" component={Helpers} />

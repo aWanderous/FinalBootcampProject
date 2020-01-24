@@ -47,7 +47,6 @@ class Tasks extends Component {
 											{task.taskName}
 										</strong>
 									</Link>
-									<DeleteBtn onClick={() => this.deleteTask(task._id)} />
 								</ListItem>
 							))}
 						</List>

@@ -8,3 +8,9 @@
     font-weight: bolder;
     color: purple;
 }
+
+#addTask {
+    float: right;
+    color: blueviolet;
+    font-family: 'Dancing Script', cursive;
+  }

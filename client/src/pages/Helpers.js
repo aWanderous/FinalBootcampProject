@@ -16,7 +16,7 @@ class Helpers extends Component {
 
 	componentDidMount() {
 		this.loadHelpers();
-	}
+	};
 
 	loadHelpers = () => {
 		API.getHelpers()

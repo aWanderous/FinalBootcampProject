@@ -13,8 +13,4 @@ router
   .put(taskController.update)
   .delete(taskController.remove);
 
-router
-  .route("/add")
-  .post(taskController.addHelper)
-
 module.exports = router;

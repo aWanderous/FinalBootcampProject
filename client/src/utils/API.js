@@ -1,5 +1,4 @@
 import axios from "axios";
-import Helpers from "../pages/Helpers";
 
 export default {
   // Gets all tasks
@@ -51,12 +50,5 @@ export default {
   },
   saveHelper: function(songData) {
     return axios.post("/api/helper", songData);
-  },
-  addHelper: function(taskId) {
-    return axios.post("/api/task/add", {taskId: taskId})
-  },
-  addTask: function(helperId) {
-    return axios.post("/api/helper/add", {helperId: helperId})
   }
-
 };

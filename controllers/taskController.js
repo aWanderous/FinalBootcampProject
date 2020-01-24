@@ -34,20 +34,5 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
-  addHelper: function(req, res){
-    Task
-      .findById({ _id: req.body.taskId })
-      .populate('helpers')
-      .exec((err,task)=> res.json(task.helper));
-    }
-  };
-  
-  // addHelper: function(req, res){
-  //   Helper.findById({_id: '5e26a591a728003fd0e74678'})
-  //   .then(helper => {
-  //     console.log(helper);
-  //     Task.update({_id: req.body.TaskId},{$push:{helpers: helper}})
-  //     .then(res.json('success'))
-  //   })
-  // },
+  }
+};

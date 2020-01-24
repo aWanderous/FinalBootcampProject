@@ -23,13 +23,12 @@ class Details extends Component {
   };
   
   updateTask = () => {
+    window.location.reload(false);
 		if (this.state.helper) {
 			API.updateTask(this.props.match.params.id,{ helper: this.state.helper })
 				.then((res) => this.loadTasks())
 				.catch((err) => console.log(err));
 		}
-    console.log(this.state.task)
-    console.log(this.state.helper)
 	};
   
   handleInputChange = (event) => {
@@ -75,7 +74,7 @@ class Details extends Component {
 								value={this.state.helper}
 								onChange={this.handleInputChange}
 								name='helper'
-								placeholder='Add Helper'
+								placeholder='Add A Helper'
 							/>
 							<AssignBtn onClick={() => this.updateTask(this.state.helper)} />
 						</Col>

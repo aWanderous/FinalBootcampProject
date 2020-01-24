@@ -40,6 +40,7 @@ class Guests extends Component {
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
+		window.location.reload(false);
 		if (this.state.guestName) {
 			API.saveGuest({
 				guestName: this.state.guestName,

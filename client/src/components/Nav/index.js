@@ -16,6 +16,9 @@ function Nav() {
       <a className="navbar-brand" href="/Costs">
         Costs
       </a>
+      <a className="navbar-brand" id="addTask" href="/addTask">
+        +
+      </a>
     </nav>
   );
 }

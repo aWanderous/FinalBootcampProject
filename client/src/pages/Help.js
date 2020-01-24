@@ -10,8 +10,7 @@ import { List, ListItem } from "../components/List";
 class Help extends Component {
   state = {
     helper: {},
-    tasks: [],
-
+    tasks: []
   };
   
   componentDidMount() {
