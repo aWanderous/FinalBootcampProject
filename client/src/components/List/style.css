@@ -15,6 +15,7 @@
   border-left: none;
   border-right: none;
   background-color: transparent ;
+  font-family: 'Vollkorn', serif;
 }
 
 .list-overflow-container li * {
@@ -23,8 +24,6 @@
 
 .list-overflow-container li a {
   color: blueviolet;
-  font-family: 'Vollkorn', serif;
-  /* font-family: 'Judson', serif; */
 }
 
 .list-overflow-container li:first-child {

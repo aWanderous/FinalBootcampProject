@@ -37,14 +37,18 @@ class Cost extends Component {
 								<ListItem key={task._id}>
 									<Link to={"/Task/" + task._id}>
 										<strong>
-											{task.taskName} costs ${task.cost}
+											{task.cost ? (
+                								task.taskName + " costs $" + task.cost
+                							) : (
+												task.taskName + " not priced yet."
+							                )}
 										</strong>
 									</Link>
 								</ListItem>
 							))}
 						</List>
 					) : (
-						<h3>No Payments</h3>
+						<p className="no-data">No Payments</p>
 					)}
 			</Container>
 		);

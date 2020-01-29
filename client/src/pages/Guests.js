@@ -63,7 +63,7 @@ class Guests extends Component {
 								value={this.state.guestName}
 								onChange={this.handleInputChange}
 								name='guestName'
-								placeholder='Add Guest'
+								placeholder='Guest name'
 							/>
 							<FormBtn
 						disabled={!(this.state.guestName)}
@@ -86,7 +86,7 @@ class Guests extends Component {
 							))}
 						</List>
 					) : (
-						<h3>No Guests Invited</h3>
+						<p className="no-data">No Guests Invited</p>
 					)}
 			</Container>
 		);

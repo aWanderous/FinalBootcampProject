@@ -4,5 +4,21 @@ body {
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
+}
 
+p {
+    font-family: 'Inria Serif', serif;}
+
+.sub-title {
+    font-family: 'Vollkorn', serif;
+    font-weight: bolder;
+    font-size: 23px;
+    color: mediumslateblue;
+}
+
+.no-data {
+    font-family: 'Judson', serif;
+    font-weight: bolder;
+    font-size: 20px;
+    color: darkblue;
 }

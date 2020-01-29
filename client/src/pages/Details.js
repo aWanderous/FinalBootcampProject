@@ -73,7 +73,7 @@ class Details extends Component {
         <Row>
           <Col size="md-12 md-offset-1">
             <article>
-              <h3>Details</h3>
+              <p className="sub-title">Details</p>
               <p>
                 {this.state.task.details}
               </p>
@@ -83,13 +83,13 @@ class Details extends Component {
         <Row>
           <Col size="md-6 md-offset-1">
             <article>
-              <h4>
+              <p className="sub-title">
                 {this.state.task.helper ? (
                 "Assign to " + this.state.task.helper
                 ) : (
                   "Task not yet assigned."                 
                 )}
-                </h4>
+                </p>
             </article>
         <form>
 							<Input
@@ -104,13 +104,13 @@ class Details extends Component {
 						</Col>
           <Col size="md-6 md-offset-1">
             <article>
-              <h4>
+              <p className="sub-title">
               {this.state.task.cost ? (
                 "This costs : $" + this.state.task.cost
                 ) : (
                   "Cost not yet determined."                 
                 )}
-              </h4>
+              </p>
             </article>
         <form>
 							<Input
@@ -126,9 +126,9 @@ class Details extends Component {
 					</Row>
           <Row>
           <Col size="md-6">
-            <h4>
+            <p className="sub-title">
               Notes
-            </h4>
+            </p>
             <p>
           {this.state.task.note ? (
            this.state.task.note

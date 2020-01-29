@@ -44,7 +44,7 @@ class Tasks extends Component {
 							))}
 						</List>
 					) : (
-						<h3>No set Tasks to Display</h3>
+						<p className="no-data">No set Tasks to Display</p>
 					)}
 			</Container>
 		);

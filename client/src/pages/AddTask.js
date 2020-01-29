@@ -62,7 +62,7 @@ class InForm extends Component {
 						value={this.state.details}
 						onChange={this.handleInputChange}
 						name='details'
-						placeholder='details (required)'
+						placeholder='Task details (required)'
 					/>
 					<FormBtn
 						disabled={!(this.state.taskName && this.state.details)}

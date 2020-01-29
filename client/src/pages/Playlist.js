@@ -94,7 +94,7 @@ class Songs extends Component {
 							))}
 						</List>
 					) : (
-						<h3>No Songs added to Playlist</h3>
+						<p className="no-data">No Songs added to Playlist</p>
 					)}
 			</Container>
 		);
