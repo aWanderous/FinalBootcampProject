@@ -1,3 +1,7 @@
+.navbar-expand-lg{
+    background-color: slategray;
+}
+
 .navbar-brand {
     font-family: 'PT Serif', serif;
     color: ghostwhite;
