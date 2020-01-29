@@ -4,7 +4,8 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-
+import DollarIcon from '../components/DollarIcon'
+import AssignIcon from "../components/AssignedIcon";
 
 class Tasks extends Component {
 	state = {
@@ -38,6 +39,16 @@ class Tasks extends Component {
 									<Link to={task.link ? task.link : "/Task/" + task._id}>
 										<strong>
 											{task.taskName}
+											{task.helper ? (
+												<AssignIcon/>
+											) : (
+												""
+											)}
+											{task.cost ? (
+												<DollarIcon/>
+											) : (
+												""
+											)}
 										</strong>
 									</Link>
 								</ListItem>

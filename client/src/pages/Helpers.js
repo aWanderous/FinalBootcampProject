@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-
+import DollarIcon from "../components/DollarIcon";
 
 class Helper extends Component {
 	state = {
@@ -40,6 +40,11 @@ class Helper extends Component {
 												task.taskName + " assign to " + task.helper
 											) : (
 												task.taskName + ", has yet to be assign to anyone."
+											)}
+											{task.cost ? (
+												<DollarIcon/>
+											) : (
+												""
 											)}
 										</strong>
 									</Link>

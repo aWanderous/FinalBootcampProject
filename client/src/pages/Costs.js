@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-
+import AssignIcon from"../components/AssignedIcon";
 
 class Cost extends Component {
 	state = {
@@ -42,6 +42,11 @@ class Cost extends Component {
                 							) : (
 												task.taskName + " not priced yet."
 							                )}
+											{task.helper ? (
+												<AssignIcon/>
+											) : (
+												""
+											)}
 										</strong>
 									</Link>
 								</ListItem>
