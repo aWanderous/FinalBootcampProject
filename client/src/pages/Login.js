@@ -14,7 +14,7 @@ class Login extends Component {
 				<Footer/>
 			</Container>
 		);
-	}
-}
+	};
+};
 
 export default Login;

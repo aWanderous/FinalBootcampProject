@@ -13,7 +13,7 @@ function Nav() {
       <a className="navbar-brand" href="/Helper">
         Helpers
       </a>
-      <a className="navbar-brand" href="/Costs">
+      <a className="navbar-brand" href="/Cost">
         Costs
       </a>
       <a className="navbar-brand" id="addTask" href="/addTask">

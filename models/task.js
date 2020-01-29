@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
   taskName: { type: String, required: true },
   details: { type: String, required: true },
-  cost: { type: Number},
   helper: {type: String},
   note: { type: String},
+  cost: { type: Number},
   link: { type: String}
 });
 

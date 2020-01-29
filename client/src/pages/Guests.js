@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import RemoveBtn from "../components/RemoveBtn";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
-
+import RemoveBtn from "../components/RemoveBtn";
 
 class Guests extends Component {
 	state = {
@@ -56,7 +55,7 @@ class Guests extends Component {
 				<Jumbotron>
 					Invited Guests
 				</Jumbotron>
-					<form>
+				<form>
 					<Row>
 						<Col size='md-6'>
 							<Input
@@ -66,31 +65,31 @@ class Guests extends Component {
 								placeholder='Guest name'
 							/>
 							<FormBtn
-						disabled={!(this.state.guestName)}
-						onClick={this.handleFormSubmit}
-					>
-						Add Guest
-					</FormBtn>
+								disabled={!(this.state.guestName)}
+								onClick={this.handleFormSubmit}
+							>
+								Add Guest
+							</FormBtn>
 						</Col>
 					</Row>
-					</form>
-					{this.state.guests.length ? (
-						<List>
-							{this.state.guests.map((guest) => (
-								<ListItem key={guest._id}>
-										<strong>
-											{guest.guestName}
-										</strong>
-									<RemoveBtn onClick={() => this.deleteGuest(guest._id)} />
-								</ListItem>
-							))}
-						</List>
-					) : (
-						<p className="no-data">No Guests Invited</p>
-					)}
+				</form>
+				{this.state.guests.length ? (
+					<List>
+						{this.state.guests.map((guest) => (
+							<ListItem key={guest._id}>
+								<strong>
+									{guest.guestName}
+								</strong>
+								<RemoveBtn onClick={() => this.deleteGuest(guest._id)} />
+							</ListItem>
+						))}
+					</List>
+				) : (
+					<p className="no-data">No Guests Invited</p>
+				)}
 			</Container>
 		);
-	}
-}
+	};
+};
 
 export default Guests;

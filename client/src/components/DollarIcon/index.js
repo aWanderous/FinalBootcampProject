@@ -1,11 +1,12 @@
 import React from "react";
 import "./style.css";
-import Dollar from "./blue-dollar.png"
 import { Link } from "react-router-dom";
+import Dollar from "./blue-dollar.png"
 
+// Link to costs page $ maker
 function DollarIcon() {
   return (
-    <Link to={"/Costs/"}>
+    <Link to={"/Cost/"}>
       <img className="priced" src={Dollar} alt= "Priced"/>
     </Link>
   );

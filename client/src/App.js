@@ -5,10 +5,10 @@ import AddTask from "./pages/AddTask";
 import Tasks from "./pages/Tasks";
 import Details from "./pages/Details";
 import Helpers from "./pages/Helpers";
-import NoMatch from "./pages/NoMatch";
 import Costs from "./pages/Costs";
 import Guests from "./pages/Guests";
-import Songs from "./pages/Playlist";
+import Songs from "./pages/Songs";
+import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/Task" component={Tasks} />
           <Route exact path="/Task/:id" component={Details} />
           <Route exact path="/Helper" component={Helpers} />
-          <Route exact path="/Costs" component={Costs} />
+          <Route exact path="/Cost" component={Costs} />
           <Route exact path="/Guest" component={Guests} />
           <Route exact path="/Song" component={Songs} />
           <Route component={NoMatch} />

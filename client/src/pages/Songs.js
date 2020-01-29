@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import RemoveBtn from "../components/RemoveBtn";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
+import RemoveBtn from "../components/RemoveBtn";
 
 
 class Songs extends Component {
@@ -45,7 +45,6 @@ class Songs extends Component {
 			API.saveSong({
                 title: this.state.title,
                 artist: this.state.artist,
-				album: this.state.album,
 			})
 				.then((res) => this.loadSongs())
 				.catch((err) => console.log(err));
@@ -58,7 +57,7 @@ class Songs extends Component {
 				<Jumbotron>
 					Songs Playlist
 				</Jumbotron>
-					<form>
+				<form>
 					<Row>
 						<Col size='md-6'>
 							<Input
@@ -74,31 +73,31 @@ class Songs extends Component {
 								placeholder='Performing artist'
 							/>
 							<FormBtn
-						disabled={!(this.state.title && this.state.artist)}
-						onClick={this.handleFormSubmit}
-					>
-						Add Song
-					</FormBtn>
+								disabled={!(this.state.title && this.state.artist)}
+								onClick={this.handleFormSubmit}
+							>
+								Add Song
+							</FormBtn>
 						</Col>
 					</Row>
-					</form>
-					{this.state.songs.length ? (
-						<List>
-							{this.state.songs.map((song) => (
-								<ListItem key={song._id}>
-										<strong>
-											{song.title} by {song.artist}
-										</strong>
-									<RemoveBtn onClick={() => this.deleteSong(song._id)} />
-								</ListItem>
-							))}
-						</List>
-					) : (
-						<p className="no-data">No Songs added to Playlist</p>
-					)}
+				</form>
+				{this.state.songs.length ? (
+					<List>
+						{this.state.songs.map((song) => (
+							<ListItem key={song._id}>
+								<strong>
+									{song.title} by {song.artist}
+								</strong>
+								<RemoveBtn onClick={() => this.deleteSong(song._id)} />
+							</ListItem>
+						))}
+					</List>
+				) : (
+					<p className="no-data">No Songs added to Playlist</p>
+				)}
 			</Container>
 		);
-	}
-}
+	};
+};
 
 export default Songs;

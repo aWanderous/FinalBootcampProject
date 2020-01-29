@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
+import { Col, Row, Container } from "../components/Grid";
 
 function NoMatch() {
   return (
@@ -15,11 +15,11 @@ function NoMatch() {
       </Row>
       <Row>
         <Col size="md-2">
-  				<Link to="/Task">← Back to Tasks</Link>
+  				<Link to="/">← Back to Login</Link>
   			</Col>
 			</Row>
     </Container>
   );
-}
+};
 
 export default NoMatch;

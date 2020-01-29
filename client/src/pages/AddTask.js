@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
@@ -25,7 +25,7 @@ class InForm extends Component {
 		if (this.state.taskName && this.state.details) {
 			API.saveTasks({
 				taskName: this.state.taskName,
-				helperName: this.state.helperName,
+				helper: this.state.helper,
 				details: this.state.details,
 			})
 				.then((res) => this.loadTasks())
@@ -68,14 +68,14 @@ class InForm extends Component {
 						disabled={!(this.state.taskName && this.state.details)}
 						onClick={this.handleFormSubmit}
 					>
-					<Link to="/Task">
-						Add Task
-					</Link>
+						<Link to="/Task">
+							Add Task
+						</Link>
 					</FormBtn>
 				</form>
 			</Container>
 		);
-	}
-}
+	};
+};
 
 export default InForm;

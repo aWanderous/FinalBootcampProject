@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import Jumbotron from "../components/Jumbotron";
+import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, } from "../components/Form";
-import RemoveBtn from "../components/RemoveBtn";
 import UpdateBtn from "../components/UpdateBtn";
+import RemoveBtn from "../components/RemoveBtn";
 
 class Details extends Component {
   state = {
@@ -47,7 +47,11 @@ class Details extends Component {
   updateTask = () => {
     window.location.reload(false);
 		if (this.state.helper || this.state.cost || this.state.note) {
-			API.updateTask(this.props.match.params.id,{ helper: this.state.helper, cost: this.state.cost, note: this.state.note })
+			API.updateTask(this.props.match.params.id,{ 
+        helper: this.state.helper,
+        cost: this.state.cost,
+        note: this.state.note 
+      })
 				.then((res) => this.loadTasks())
 				.catch((err) => console.log(err));
 		}
@@ -63,13 +67,9 @@ class Details extends Component {
   render() {
     return (
       <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron>
-                {this.state.task.taskName}
-            </Jumbotron>
-          </Col>
-        </Row>
+        <Jumbotron>
+          {this.state.task.taskName}
+        </Jumbotron>
         <Row>
           <Col size="md-12 md-offset-1">
             <article>
@@ -89,9 +89,9 @@ class Details extends Component {
                 ) : (
                   "Task not yet assigned."                 
                 )}
-                </p>
+              </p>
             </article>
-        <form>
+            <form>
 							<Input
 								value={this.state.helper}
 								onChange={this.handleInputChange}
@@ -100,19 +100,19 @@ class Details extends Component {
 							/>
               <RemoveBtn onClick={() => this.deleteHelper(this.state.helper)} />									
 							<UpdateBtn onClick={() => this.updateTask(this.state.helper)} />
-					</form>
-						</Col>
+					  </form>
+					</Col>
           <Col size="md-6 md-offset-1">
             <article>
               <p className="sub-title">
-              {this.state.task.cost ? (
-                "This costs : $" + this.state.task.cost
+                {this.state.task.cost ? (
+                  "This costs : $" + this.state.task.cost
                 ) : (
                   "Cost not yet determined."                 
                 )}
               </p>
             </article>
-        <form>
+            <form>
 							<Input
 								value={this.state.cost}
 								onChange={this.handleInputChange}
@@ -121,36 +121,36 @@ class Details extends Component {
 							/>
               <RemoveBtn onClick={() => this.deleteCost(this.state.cost)} />									
 							<UpdateBtn onClick={() => this.updateTask(this.state.cost)} />
-          </form>
-						</Col>
-					</Row>
-          <Row>
+            </form>
+					</Col>
+				</Row>
+        <Row>
           <Col size="md-6">
             <p className="sub-title">
               Notes
             </p>
             <p>
-          {this.state.task.note ? (
-           this.state.task.note
-                ) : (
-                  ""                 
-                )}
-                </p>
+              {this.state.task.note ? (
+                this.state.task.note
+              ) : (
+                ""                 
+              )}
+            </p>
           </Col>
-            <Col size="md-6">
-          <TextArea
-						value={this.state.note}
-						onChange={this.handleInputChange}
-						name='note'
-						placeholder='notes on your wedding'
-					/>
-					<RemoveBtn onClick={() => this.deleteNote(this.state.note)} />									
-							<UpdateBtn onClick={() => this.updateTask(this.state.note)} />
+          <Col size="md-6">
+            <TextArea
+			  			value={this.state.note}
+				  		onChange={this.handleInputChange}
+					  	name='note'
+						  placeholder='notes on your wedding'
+					  />
+					  <RemoveBtn onClick={() => this.deleteNote(this.state.note)} />									
+						<UpdateBtn onClick={() => this.updateTask(this.state.note)} />
           </Col>
-          </Row>
+        </Row>
       </Container>
     );
-  }
-}
+  };
+};
 
 export default Details;

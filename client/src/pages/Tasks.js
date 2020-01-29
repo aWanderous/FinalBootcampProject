@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import Jumbotron from "../components/Jumbotron";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import DollarIcon from '../components/DollarIcon'
+import DollarIcon from "../components/DollarIcon";
 import AssignIcon from "../components/AssignedIcon";
 
 class Tasks extends Component {
@@ -32,34 +32,34 @@ class Tasks extends Component {
 				<Jumbotron>
 					To-do List
 				</Jumbotron>
-					{this.state.tasks.length ? (
-						<List>
-							{this.state.tasks.map((task) => (
-								<ListItem key={task._id}>
-									<Link to={task.link ? task.link : "/Task/" + task._id}>
-										<strong>
-											{task.taskName}
-											{task.helper ? (
-												<AssignIcon/>
-											) : (
-												""
-											)}
-											{task.cost ? (
-												<DollarIcon/>
-											) : (
-												""
-											)}
-										</strong>
-									</Link>
-								</ListItem>
-							))}
-						</List>
-					) : (
-						<p className="no-data">No set Tasks to Display</p>
-					)}
+				{this.state.tasks.length ? (
+					<List>
+						{this.state.tasks.map((task) => (
+							<ListItem key={task._id}>
+								<Link to={task.link ? task.link : "/Task/" + task._id}>
+									<strong>
+										{task.taskName}
+									</strong>
+								</Link>
+								{task.helper ? (
+									<AssignIcon/>
+								) : (
+									""
+								)}
+								{task.cost ? (
+									<DollarIcon/>
+								) : (
+									""
+								)}
+							</ListItem>
+						))}
+					</List>
+				) : (
+					<p className="no-data">No set Tasks to Display</p>
+				)}
 			</Container>
 		);
-	}
-}
+	};
+};
 
 export default Tasks;
