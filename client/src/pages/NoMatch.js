@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
+import Footer from "../components/Footer";
 
 function NoMatch() {
   return (
@@ -18,6 +19,7 @@ function NoMatch() {
   				<Link to="/">← Back to Login</Link>
   			</Col>
 			</Row>
+      <Footer/>
     </Container>
   );
 };

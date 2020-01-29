@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
 import AddTask from "./pages/AddTask";
 import Tasks from "./pages/Tasks";
 import Details from "./pages/Details";
@@ -17,7 +17,7 @@ function App() {
         <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={SignIn} />
           <Route exact path="/AddTask" component={AddTask} />
           <Route exact path="/Task" component={Tasks} />
           <Route exact path="/Task/:id" component={Details} />
